@@ -3,14 +3,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { LoginViewComponent } from './views/login-view/login-view.component';
 
 const routes: Routes = [
-  // Define tus rutas aquí
+  {
+    path: 'userLogin',
+    component: LoginViewComponent
+  }
 ];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginViewComponent,
+   // LoginViewComponent
   ],
   imports: [
     BrowserModule,
