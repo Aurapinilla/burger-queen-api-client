@@ -1,0 +1,16 @@
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 200px;
+}
+
+button {
+    margin-top: 20px;
+    background-color: #FF9900;
+    font-weight: bolder;
+    border-radius: 8px;
+}
+
+input {
+    border-radius: 10px;
+}
