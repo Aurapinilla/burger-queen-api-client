@@ -26,17 +26,38 @@ export class LoginFormComponent implements OnInit {
 
   async save(event: Event) {
     event.preventDefault();
+    
     if (this.loginForm.valid) {
       const formData = this.loginForm.value;
 
       try {
         const loginResponse = await firstValueFrom(this.apiService.login(formData.email, formData.password));
+        const role = loginResponse.user.role;
+        
         console.log('loginresponse', loginResponse);
         console.log('token', loginResponse.accessToken);
+        console.log('role', role);
+        
 
-        if (loginResponse && loginResponse.accessToken) {  
+        if (loginResponse && loginResponse.accessToken) {
           console.log('Login was successful! Token:', loginResponse.accessToken);
-          this.router.navigate(['/orders']);
+          switch(role) {
+            case 'admin':
+              this.router.navigate(['/admin']);
+              break;
+
+            case 'chef':
+              this.router.navigate(['/kitchen']);
+              break;
+
+            case 'waiter':
+              this.router.navigate(['/orders']);
+              break;
+
+            default:
+              console.log('Unexpected Error');
+          }
+
         } else {
           console.log('Error trying to login.');
         }

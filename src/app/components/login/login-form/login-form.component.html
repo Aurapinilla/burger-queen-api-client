@@ -11,13 +11,13 @@
         <input type="password" id="passwordInput" formControlName="password">
         <p *ngIf="passwordInput?.errors && passwordInput?.dirty">
             <small *ngIf="passwordInput?.hasError('required')">Password is required</small>
-            <small *ngIf="passwordInput?.hasError('minlength')">Password must be minimum 6 characters long</small>
+            <small *ngIf="passwordInput?.hasError('minlength')">Password is minimum 6 characters long</small>
         </p>
         <p *ngIf="errorMessage && passwordInput?.value">
             <small>{{ errorMessage }}</small>
         </p>    
     </div>
     <div>
-        <button [disabled]="loginForm.invalid" type="submit">Login</button>
+        <button [disabled]="loginForm.invalid" type="submit" id="loginBtn">Login</button>
     </div>
 </form>

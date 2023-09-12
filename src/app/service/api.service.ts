@@ -4,10 +4,11 @@ import { Observable } from 'rxjs';
 
 interface loginResponse {
   accessToken: string;
-  user: string;
-  email: string;
-  role: string;
-  id: number;
+  user: {
+    email: string;
+    role: string;
+    id: number;
+  };
 }
 
 @Injectable({

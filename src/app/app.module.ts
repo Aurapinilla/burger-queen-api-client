@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { LoginViewComponent } from './views/login-view/login-view.component';
 import { LoginFormComponent } from './components/login/login-form/login-form.component';
 import { OrdersViewComponent } from './views/orders-view/orders-view.component';
+import { AdminViewComponent } from './views/admin-view/admin-view.component';
+import { KitchenViewComponent } from './views/kitchen-view/kitchen-view.component';
 
 
 @NgModule({
@@ -16,6 +18,8 @@ import { OrdersViewComponent } from './views/orders-view/orders-view.component';
     LoginViewComponent,
     LoginFormComponent,
     OrdersViewComponent,
+    AdminViewComponent,
+    KitchenViewComponent,
   ],
   imports: [
     BrowserModule,
