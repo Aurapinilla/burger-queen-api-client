@@ -2,6 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+interface loginResponse {
+  accessToken: string;
+  user: string;
+  email: string;
+  role: string;
+  id: number;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,14 +20,18 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   public getData(): Observable<any> {
-    //Revisar si debo especificar la estructura de datos que retorna la api
+    console.log('getting data', this.http.get<any>(this.urlApi));
     return this.http.get<any>(this.urlApi);
+    
   }
 
-  checkUserExists(email: string): Observable<any> {
-    const url = `${this.urlApi}/users/${email}`;
-  
-    // Realiza una solicitud GET al servidor para verificar si el usuario existe
-    return this.http.get(url);
+  public login(email:string, password:string): Observable<loginResponse> {
+    const url = `${this.urlApi}login`;
+    const body = { email, password };
+    console.log('url', url);
+    console.log('body', body);
+    
+    
+    return this.http.post<loginResponse>(url, body);
   }
 }

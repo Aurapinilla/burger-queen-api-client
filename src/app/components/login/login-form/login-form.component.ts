@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../../../service/api.service';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-login-form',
@@ -25,24 +26,21 @@ export class LoginFormComponent implements OnInit {
       const formData = this.loginForm.value;
       
       try {
-        // Verificar si el correo electrónico ya existe
-        const emailExists = await this.apiService.checkUserExists(formData.email).toPromise();
-  
-        if (emailExists) {
-          // El correo electrónico existe, puedes manejar esto como desees
-          console.log('El correo electrónico ya existe.');
+        const loginResponse = await firstValueFrom(this.apiService.login(formData.email, formData.password));
+        console.log('loginresponse', loginResponse);
+        console.log('token', loginResponse.accessToken);
+        
+        if (loginResponse && loginResponse.accessToken) {
+          console.log('Inicio de sesión exitoso! Token:', loginResponse.accessToken);
         } else {
-          // El correo electrónico no existe, continúa con el envío del formulario o lo que necesites hacer.
-          console.log('El correo electrónico no existe. Continuar con el envío del formulario o acción deseada.');
+          console.log('Error al iniciar sesión.');
         }
       } catch (error) {
-        // Manejar errores de solicitud, como conexión fallida, 404 Not Found, etc.
-        console.error('Error al verificar el correo electrónico:', error);
+        console.error('Error al iniciar sesión:', error);
       }
     }
   }
   
-
   get emailInput() {
     return this.loginForm.get('email');
   }
