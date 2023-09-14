@@ -14,7 +14,7 @@ interface loginResponse {
 @Injectable({
   providedIn: 'root'
 })
-export class ApiService {
+export class LoginService {
 
   private urlApi = 'http://localhost:8080/';
 
