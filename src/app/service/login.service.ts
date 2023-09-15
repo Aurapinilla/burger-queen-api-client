@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-interface loginResponse {
+export interface loginResponse {
   accessToken: string;
   user: {
     email: string;
@@ -16,23 +16,18 @@ interface loginResponse {
 })
 export class LoginService {
 
-  private urlApi = 'http://localhost:8080/';
+  private urlApi = 'http://localhost:8080/login';
 
   constructor(private http: HttpClient) { }
 
-  public getData(): Observable<any> {
-    console.log('getting data', this.http.get<any>(this.urlApi));
-    return this.http.get<any>(this.urlApi);
-    
+
+  login(email:string, password:string): Observable<any> {
+    // Accediendo al método post  de la variable http de HttpClient que recibe como parámetros la url y el body
+    return this.http.post(this.urlApi, {
+      email: email,
+      password: password,
+    });
   }
 
-  public login(email:string, password:string): Observable<loginResponse> {
-    const url = `${this.urlApi}login`;
-    const body = { email, password };
-    console.log('url', url);
-    console.log('body', body);
-    
-    
-    return this.http.post<loginResponse>(url, body);
-  }
+
 }

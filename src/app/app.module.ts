@@ -10,6 +10,7 @@ import { LoginFormComponent } from './components/login/login-form/login-form.com
 import { OrdersViewComponent } from './views/orders-view/orders-view.component';
 import { AdminViewComponent } from './views/admin-view/admin-view.component';
 import { KitchenViewComponent } from './views/kitchen-view/kitchen-view.component';
+import { NeworderFormComponent } from './components/neworder-form/neworder-form.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { KitchenViewComponent } from './views/kitchen-view/kitchen-view.componen
     OrdersViewComponent,
     AdminViewComponent,
     KitchenViewComponent,
+    NeworderFormComponent,
   ],
   imports: [
     BrowserModule,

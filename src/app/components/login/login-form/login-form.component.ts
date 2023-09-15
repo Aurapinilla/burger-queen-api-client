@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ApiService } from '../../../service/api.service';
-import { firstValueFrom } from 'rxjs';
+import { LoginService } from '../../../service/login.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,7 +14,7 @@ export class LoginFormComponent implements OnInit {
   errorMessage: string = '';
 
 
-  constructor(private formBuilder: FormBuilder, private apiService: ApiService, private router:Router) {
+  constructor(private formBuilder: FormBuilder, private apiService: LoginService, private router: Router) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -26,22 +25,20 @@ export class LoginFormComponent implements OnInit {
 
   async save(event: Event) {
     event.preventDefault();
-    
-    if (this.loginForm.valid) {
-      const formData = this.loginForm.value;
 
-      try {
-        const loginResponse = await firstValueFrom(this.apiService.login(formData.email, formData.password));
-        const role = loginResponse.user.role;
-        
-        console.log('loginresponse', loginResponse);
-        console.log('token', loginResponse.accessToken);
-        console.log('role', role);
-        
+    const formData = this.loginForm.value;
 
-        if (loginResponse && loginResponse.accessToken) {
-          console.log('Login was successful! Token:', loginResponse.accessToken);
-          switch(role) {
+
+    this.apiService.login(formData.email, formData.password)
+      .subscribe({
+        next: (result) => {
+          sessionStorage.setItem('token', result.accessToken);
+          sessionStorage.setItem('idUser', result.user.id);
+          sessionStorage.setItem('role', result.user.role);
+
+          const role = sessionStorage.getItem('role');
+
+          switch (role) {
             case 'admin':
               this.router.navigate(['/admin']);
               break;
@@ -57,29 +54,26 @@ export class LoginFormComponent implements OnInit {
             default:
               console.log('Unexpected Error');
           }
+        },
+        error: (error) => {
 
-        } else {
-          console.log('Error trying to login.');
-        }
-      } catch (error: any) {
-        const errMessage: string = error.error;
-        if (errMessage === 'Incorrect password') {
-          this.errorMessage = 'Incorrect Passowrd';
-          console.error(this.errorMessage);
-        }
-        else if (errMessage === 'Cannot find user') {
-          this.errorMessage = 'User not found';
-          console.error(this.errorMessage);
-        }
-        else {
-          console.error(error);
-        }
+          if (error.status === 400) {
+            console.log(error.error, 'Invalid credentials');
+          }
+          else if (error.error === 'Incorrect password') {
+            this.errorMessage = 'Incorrect Passowrd';
+            console.error(this.errorMessage);
+          }
+          else if (error.error === 'Cannot find user') {
+            this.errorMessage = 'User not found';
+            console.error(this.errorMessage);
+          }
+        },
+      });
 
-        setTimeout(() => {
-          this.errorMessage = '';
-        }, 3000);
-      }
-    }
+    setTimeout(() => {
+      this.errorMessage = '';
+    }, 3000);
   }
 
   get emailInput() {
@@ -90,4 +84,5 @@ export class LoginFormComponent implements OnInit {
     return this.loginForm.get('password');
   }
 }
+
 

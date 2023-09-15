@@ -1,7 +1,19 @@
 <header>
     <img src="../../../assets/bqaclogo.png" alt="Logo"> 
 </header>
-<div id="menuOption">
-    <button>Breakfast</button>
-    <button>Lunch & Dinner</button>
+<div id="menuSelection">
+    <button (click)="breakfastMenu()">Breakfast</button>
+    <button (click)="lunchAndDinnerMenu()">Lunch & Dinner</button>
+</div>
+<div id="displayMenu">
+    <div id="breakfastMenu" *ngIf="isBreakfastSelected" class="menu">
+        <ul>
+            <li *ngFor="let product of filteredProducts">{{ product.name }} - ${{ product.price }}</li>
+          </ul>
+    </div>
+    <div id="l&dMenu" *ngIf="!isBreakfastSelected" class="menu">
+        <ul>
+            <li *ngFor="let product of filteredProducts">{{ product.name }} - ${{ product.price }}</li>
+          </ul>
+    </div>
 </div>
