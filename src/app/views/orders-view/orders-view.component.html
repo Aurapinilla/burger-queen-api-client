@@ -23,7 +23,7 @@
                     <span>{{ productQuantities[$index] }}</span>
                     <button class="qtyBtn" (click)="productQuantities[$index] = productQuantities[$index] + 1">+</button>
                 </div>
-                <button class="addBtn">Add</button>
+                <button [disabled]="productQuantities[$index] === 0" class="addBtn" (click)="addProductToOrder(productQuantities[$index], product)">Add</button>
             </div>
         </div>
         <div id="l&dMenu" *ngIf="!isBreakfastSelected" class="menuType">
@@ -36,9 +36,9 @@
                     <span>{{ productQuantities[$index] }}</span>
                     <button class="qtyBtn" (click)="productQuantities[$index] = productQuantities[$index] + 1">+</button>
                 </div>
-                <button class="addBtn">Add</button>
+                <button [disabled]="productQuantities[$index] === 0" class="addBtn" (click)="addProductToOrder(productQuantities[$index], product)">Add</button>
             </div>
         </div>
     </section>
-    <app-neworder-form></app-neworder-form>
+    <app-neworder-form #newOrderForm></app-neworder-form>
 </div>

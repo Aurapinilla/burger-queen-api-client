@@ -2,6 +2,11 @@
     <h2>Order Summary</h2>
     <div id="orderProducts">
         <!--Add order products dinamically-->
+        <div *ngFor="let item of orderedProducts">
+            <h4>{{ item.quantity }}</h4>
+            <h4>{{ item.product.name }}</h4>
+            <h4>{{ item.product.price | currency }}</h4>
+        </div>
     </div>
     <p>Total</p>
     <button>Create Order</button>

@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, EventEmitter, Output, ViewChild } from '@angular/core';
 import { ProductsService } from '../../service/products.service';
 import { productResponse } from '../../interfaces/products.interface';
+import { NeworderFormComponent } from '../../components/neworder-form/neworder-form.component'
 import { ordersResponse } from '../../interfaces/orders.interface'
 
 @Component({
@@ -9,6 +10,8 @@ import { ordersResponse } from '../../interfaces/orders.interface'
   styleUrls: ['./orders-view.component.css']
 })
 export class OrdersViewComponent implements OnInit{
+  @ViewChild('newOrderForm') newOrderForm!: NeworderFormComponent;
+
   products: productResponse[] = [];
   filteredProducts: productResponse[] = [];
   isBreakfastSelected: boolean = true;
@@ -16,6 +19,8 @@ export class OrdersViewComponent implements OnInit{
   @Input() tableNumber!:string;
   productQuantities: number[] = [];
   total: number = 0;
+
+  @Output() productAdded = new EventEmitter<{quantity: number, product: productResponse}>();
   
   constructor(private productService: ProductsService) {}
 
@@ -60,4 +65,11 @@ export class OrdersViewComponent implements OnInit{
       }
     })
   }
+
+  addProductToOrder(quantity: number, product: productResponse) {
+    this.newOrderForm.addProduct({ quantity, product });
+
+    console.log('Evento emitido:', { quantity, product });
+  }
+  
 }

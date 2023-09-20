@@ -3,11 +3,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { productResponse } from '../interfaces/products.interface';
 
-export interface ProductsQty {
-  qty: number;
-  product: productResponse;
-}
-
 @Injectable({
   providedIn: 'root'
 })
