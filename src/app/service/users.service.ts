@@ -1,11 +1,5 @@
 import { Injectable } from '@angular/core';
-
-export interface usersResponse {
-  email: string;
-  password: string;
-  role: string;
-  id: number;
-}
+import { usersResponse } from '../interfaces/users.interface';
 
 @Injectable({
   providedIn: 'root'

@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ProductsService, productResponse } from '../../service/products.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { ProductsService } from '../../service/products.service';
+import { productResponse } from '../../interfaces/products.interface';
+import { ordersResponse } from '../../interfaces/orders.interface'
 
 @Component({
   selector: 'app-orders-view',
@@ -10,6 +12,10 @@ export class OrdersViewComponent implements OnInit{
   products: productResponse[] = [];
   filteredProducts: productResponse[] = [];
   isBreakfastSelected: boolean = true;
+  @Input() clientName!:string; //Agregar campos al form
+  @Input() tableNumber!:string;
+  productQuantities: number[] = [];
+  total: number = 0;
   
   constructor(private productService: ProductsService) {}
 
@@ -29,6 +35,7 @@ export class OrdersViewComponent implements OnInit{
       
       this.products = result;
       this.filteredProducts = this.filterProductByType('Breakfast');
+      this.productQuantities = new Array(this.filteredProducts.length).fill(0);
     },
     error: (err) => {
       console.error(err);
@@ -45,6 +52,7 @@ export class OrdersViewComponent implements OnInit{
         this.products = result;
         this.filteredProducts = this.filterProductByType('Lunch');
         this.isBreakfastSelected = false;
+        this.productQuantities = new Array(this.filteredProducts.length).fill(0);
       },
       error: (err) => {
         console.error(err);

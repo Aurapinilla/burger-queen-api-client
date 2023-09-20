@@ -2,18 +2,43 @@
     <img src="../../../assets/bqaclogo.png" alt="Logo"> 
 </header>
 <div id="menuSelection">
-    <button (click)="breakfastMenu()">Breakfast</button>
-    <button (click)="lunchAndDinnerMenu()">Lunch & Dinner</button>
+    <button class ="menuBtn" (click)="breakfastMenu()">Breakfast</button>
+    <button class ="menuBtn" (click)="lunchAndDinnerMenu()">Lunch & Dinner</button>
+</div>
+<div id="client-table">
+    <label for="clientsName">Client's Name: </label>
+    <input type="text" id="clientsName">
+    <label for="tableNumber">Table N°: </label>
+    <input type="text" id="tableNumber">
 </div>
 <div id="displayMenu">
-    <div id="breakfastMenu" *ngIf="isBreakfastSelected" class="menu">
-        <ul>
-            <li *ngFor="let product of filteredProducts">{{ product.name }} - ${{ product.price }}</li>
-          </ul>
-    </div>
-    <div id="l&dMenu" *ngIf="!isBreakfastSelected" class="menu">
-        <ul>
-            <li *ngFor="let product of filteredProducts">{{ product.name }} - ${{ product.price }}</li>
-          </ul>
-    </div>
+    <section id="menusContainer">
+        <div id="breakfastMenu" *ngIf="isBreakfastSelected" class="menuType">
+            <div *ngFor="let product of filteredProducts; let $index = index" class="menuList">
+                <!--<img src="{{product.image}}">-->
+                <h3>{{product.name}}</h3>
+                <h3>{{product.price | currency}}</h3>
+                <div class="addProduct">
+                    <button [disabled]="productQuantities[$index] === 0"  class="qtyBtn" (click)="productQuantities[$index] = productQuantities[$index] - 1">-</button>
+                    <span>{{ productQuantities[$index] }}</span>
+                    <button class="qtyBtn" (click)="productQuantities[$index] = productQuantities[$index] + 1">+</button>
+                </div>
+                <button class="addBtn">Add</button>
+            </div>
+        </div>
+        <div id="l&dMenu" *ngIf="!isBreakfastSelected" class="menuType">
+            <div *ngFor="let product of filteredProducts; let $index = index" class="menuList">
+                <!--<img src="{{product.image}}">-->
+                <h3>{{product.name}}</h3>
+                <h3>{{product.price | currency}}</h3>
+                <div class="addProduct">
+                    <button [disabled]="productQuantities[$index] === 0" class="qtyBtn" (click)="productQuantities[$index] = productQuantities[$index] - 1">-</button>
+                    <span>{{ productQuantities[$index] }}</span>
+                    <button class="qtyBtn" (click)="productQuantities[$index] = productQuantities[$index] + 1">+</button>
+                </div>
+                <button class="addBtn">Add</button>
+            </div>
+        </div>
+    </section>
+    <app-neworder-form></app-neworder-form>
 </div>

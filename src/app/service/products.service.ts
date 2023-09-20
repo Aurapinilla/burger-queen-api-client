@@ -1,15 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-export interface productResponse {
-  id: number;
-  name: string;
-  price: number;
-  image: string;
-  type: string;
-  dateEntry: string;
-}
+import { productResponse } from '../interfaces/products.interface';
 
 export interface ProductsQty {
   qty: number;

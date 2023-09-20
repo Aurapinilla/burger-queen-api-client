@@ -8,6 +8,11 @@ import { KitchenViewComponent } from './views/kitchen-view/kitchen-view.componen
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: '/userLogin',
+    pathMatch: 'full'
+  },
+  {
     path: 'userLogin',
     component: LoginViewComponent
   },

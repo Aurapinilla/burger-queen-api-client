@@ -57,16 +57,11 @@ export class LoginFormComponent implements OnInit {
         },
         error: (error) => {
 
-          if (error.status === 400) {
-            console.log(error.error, 'Invalid credentials');
+          if (error.error === 'Cannot find user') {
+            this.errorMessage = 'Cannot find user';
           }
           else if (error.error === 'Incorrect password') {
-            this.errorMessage = 'Incorrect Passowrd';
-            console.error(this.errorMessage);
-          }
-          else if (error.error === 'Cannot find user') {
-            this.errorMessage = 'User not found';
-            console.error(this.errorMessage);
+            this.errorMessage = 'Incorrect password';
           }
         },
       });
