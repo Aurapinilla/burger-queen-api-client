@@ -1,13 +1,14 @@
 <div id="orderSummary">
     <h2>Order Summary</h2>
-    <div id="orderProducts">
+    <div>
         <!--Add order products dinamically-->
-        <div *ngFor="let item of orderedProducts">
+        <div id="orderProducts" *ngFor="let item of orderedProducts">
             <h4>{{ item.quantity }}</h4>
             <h4>{{ item.product.name }}</h4>
             <h4>{{ item.product.price | currency }}</h4>
+            <i class="fa-solid fa-trash"></i>
         </div>
     </div>
-    <p>Total</p>
+    <span>Total</span>
     <button>Create Order</button>
 </div>

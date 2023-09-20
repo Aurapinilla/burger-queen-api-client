@@ -48,7 +48,7 @@ button {
 #menusContainer {
     position: absolute;
     top: 310px;
-    left: 40px;
+    left: 20px;
 }
 
 .menuList {
@@ -89,9 +89,11 @@ button {
 }
 
 app-neworder-form {
+    width: 300px;
     position: absolute;
-    right: 0;
+    right: 20px;
     top: 220px;
     background-color: #F1F0F0;
     padding: 30px;
+    border-radius: 8px;
 }

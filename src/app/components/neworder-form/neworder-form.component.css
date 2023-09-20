@@ -1,0 +1,27 @@
+#orderSummary {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#orderProducts {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+span {
+    font-weight: bolder;
+}
+
+button {
+    background-color: #FF9900;
+    border-radius: 3px;
+    font-weight: bolder;
+    font-size: 15px;
+}
