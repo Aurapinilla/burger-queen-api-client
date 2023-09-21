@@ -72,4 +72,7 @@ export class OrdersViewComponent implements OnInit{
     console.log('Evento emitido:', { quantity, product });
   }
   
+  resetQuantity(index: number) {
+    this.productQuantities[index] = 0;
+  }
 }

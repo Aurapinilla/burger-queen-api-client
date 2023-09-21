@@ -2,11 +2,11 @@
     <h2>Order Summary</h2>
     <div>
         <!--Add order products dinamically-->
-        <div id="orderProducts" *ngFor="let item of orderedProducts">
+        <div id="orderProducts" *ngFor="let item of orderedProducts, let i = index">
             <h4>{{ item.quantity }}</h4>
             <h4>{{ item.product.name }}</h4>
             <h4>{{ item.product.price | currency }}</h4>
-            <i class="fa-solid fa-trash"></i>
+            <i class="fa-solid fa-trash" (click)="deleteProduct(i)"></i>
         </div>
     </div>
     <span>Total</span>
