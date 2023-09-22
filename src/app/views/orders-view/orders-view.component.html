@@ -5,12 +5,7 @@
     <button class ="menuBtn" (click)="breakfastMenu()">Breakfast</button>
     <button class ="menuBtn" (click)="lunchAndDinnerMenu()">Lunch & Dinner</button>
 </div>
-<div id="client-table">
-    <label for="clientsName">Client's Name: </label>
-    <input type="text" id="clientsName">
-    <label for="tableNumber">Table N°: </label>
-    <input type="text" id="tableNumber">
-</div>
+
 <div id="displayMenu">
     <section id="menusContainer">
         <div id="breakfastMenu" *ngIf="isBreakfastSelected" class="menuType">

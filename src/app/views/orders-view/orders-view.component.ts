@@ -2,7 +2,6 @@ import { Component, Input, OnInit, EventEmitter, Output, ViewChild } from '@angu
 import { ProductsService } from '../../service/products.service';
 import { productResponse } from '../../interfaces/products.interface';
 import { NeworderFormComponent } from '../../components/neworder-form/neworder-form.component'
-import { ordersResponse } from '../../interfaces/orders.interface'
 
 @Component({
   selector: 'app-orders-view',
@@ -15,8 +14,6 @@ export class OrdersViewComponent implements OnInit{
   products: productResponse[] = [];
   filteredProducts: productResponse[] = [];
   isBreakfastSelected: boolean = true;
-  @Input() clientName!:string; //Agregar campos al form
-  @Input() tableNumber!:string;
   productQuantities: number[] = [];
   total: number = 0;
 

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { loginResponse } from '../interfaces/login.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +13,10 @@ export class LoginService {
 
 
   login(email:string, password:string): Observable<any> {
-    // Accediendo al método post  de la variable http de HttpClient que recibe como parámetros la url y el body
+
     return this.http.post(this.urlApi, {
       email: email,
       password: password,
     });
   }
-
-
 }

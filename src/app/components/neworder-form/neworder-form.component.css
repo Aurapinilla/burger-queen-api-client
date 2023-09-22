@@ -1,6 +1,12 @@
 #orderSummary {
     display: flex;
     flex-direction: column;
+    padding: 10px 30px;
+    margin-left:610px;
+    margin-right: 20px;
+    border: 1px solid rgb(49, 49, 48);
+    border-radius: 8px;
+    background-color: #F1F0F0;
     gap: 10px;
 }
 
@@ -9,6 +15,15 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+}
+
+#client-table {
+    position: absolute;
+    top:0;
+    left: 0;
+    display: flex;
+    gap: 10px;
+margin-bottom: 10px;
 }
 
 h2 {
@@ -21,7 +36,19 @@ span {
 
 button {
     background-color: #FF9900;
-    border-radius: 3px;
+    border-radius: 8px;
+    margin: 15px 20px;
     font-weight: bolder;
     font-size: 15px;
+    padding: 5px;
+}
+
+input {
+    padding: 4px;
+}
+
+#total {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
 }

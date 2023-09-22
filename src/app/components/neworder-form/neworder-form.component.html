@@ -1,7 +1,12 @@
+<div id="client-table">
+    <label for="clientsName">Client's Name: </label>
+    <input type="text" id="clientsName">
+    <label for="tableNumber">Table N°: </label>
+    <input type="text" id="tableNumber">
+</div>
 <div id="orderSummary">
     <h2>Order Summary</h2>
     <div>
-        <!--Add order products dinamically-->
         <div id="orderProducts" *ngFor="let item of orderedProducts, let i = index">
             <h4>{{ item.quantity }}</h4>
             <h4>{{ item.product.name }}</h4>
@@ -9,6 +14,9 @@
             <i class="fa-solid fa-trash" (click)="deleteProduct(i)"></i>
         </div>
     </div>
-    <span>Total</span>
-    <button>Create Order</button>
+    <div id="total">
+        <span>Total</span>
+        <span>{{ total | currency}}</span>
+    </div>
+    <button [disabled]="orderedProducts.length === 0" (click)="resetOrder()">Create Order</button>
 </div>
