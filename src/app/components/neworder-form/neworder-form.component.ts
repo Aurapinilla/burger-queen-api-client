@@ -1,8 +1,8 @@
-import { Component, Input, EventEmitter, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { productResponse } from '../../interfaces/products.interface';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ordersResponse } from '../../interfaces/orders.interface';
 import { OrdersService } from '../../service/orders.service';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-neworder-form',
@@ -10,13 +10,13 @@ import { OrdersService } from '../../service/orders.service';
   styleUrls: ['./neworder-form.component.css']
 })
 export class NeworderFormComponent {
-  //sendOrder: FormGroup;
+
+  clientName: string = ''; // Inicializa clientName como una cadena vacía
+  tableNumber: string = '';
+
   orderedProducts: { product: productResponse, quantity: number }[] = [];
 
-  //constructor(private formBuilder: FormBuilder, private ordersService: OrdersService) {
-  ////  userId: sessionStorage.getItem('idUser'),
-   // })
-  //}
+  constructor(private ordersService: OrdersService) {}
 
   addProduct(productInfo: { product: productResponse, quantity: number }) {
     this.orderedProducts.push(productInfo);
@@ -33,8 +33,44 @@ export class NeworderFormComponent {
     }
   }
 
+  createOrder() {
+
+    const orderedProductsArray = this.orderedProducts.map(item => ({
+      qty: item.quantity,
+      product: item.product
+    }));
+
+    const newOrder: ordersResponse = {
+      id: 0,
+      userId: (sessionStorage.getItem('idUser') || ''),
+      client: this.clientName,
+      products: orderedProductsArray,
+      status: 'pending',
+      dataEntry: new Date().toISOString()
+    };
+
+    this.ordersService.postOrder(newOrder)
+    .pipe(
+      catchError((error) => {
+        // Maneja errores si ocurren al enviar la solicitud
+        console.error('Error al crear la orden:', error);
+        // Puedes realizar otras acciones de manejo de errores aquí
+        return []; // Retorna un valor predeterminado o vacío en caso de error
+      })
+    )
+    .subscribe(
+      (response) => {
+        // Maneja la respuesta del servidor si es necesario
+        console.log('Orden creada exitosamente:', response);
+        // Puedes realizar otras acciones aquí, como reiniciar la orden, etc.
+      }
+    );
+  }
+
   resetOrder() {
     this.orderedProducts = [];
+    this.clientName = '';
+    this.tableNumber = '';
   }
 
   get total () {

@@ -1,8 +1,8 @@
 <div id="client-table">
     <label for="clientsName">Client's Name: </label>
-    <input type="text" id="clientsName">
+    <input type="text" id="clientsName" [(ngModel)]="clientName">
     <label for="tableNumber">Table N°: </label>
-    <input type="text" id="tableNumber">
+    <input type="text" id="tableNumber" [(ngModel)]="tableNumber">
 </div>
 <div id="orderSummary">
     <h2>Order Summary</h2>
@@ -18,5 +18,5 @@
         <span>Total</span>
         <span>{{ total | currency}}</span>
     </div>
-    <button [disabled]="orderedProducts.length === 0" (click)="resetOrder()">Create Order</button>
+    <button [disabled]="orderedProducts.length === 0" (click)="createOrder(); resetOrder()">Create Order</button>
 </div>

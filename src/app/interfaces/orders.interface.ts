@@ -3,12 +3,9 @@ import { productResponse } from '../interfaces/products.interface';
 
 export interface ordersResponse {
     id: number;
-    userId: usersResponse["id"];
+    userId: string;
     client: string;
-    products: [
-      qty: number,
-      product: productResponse
-    ];
+    products: { qty: number; product: productResponse }[];
     status: string;
     dataEntry: string;
   }

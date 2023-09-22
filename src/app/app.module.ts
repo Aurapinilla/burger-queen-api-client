@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from '../app/app-routing.module';
@@ -25,6 +25,7 @@ import { NeworderFormComponent } from './components/neworder-form/neworder-form.
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,

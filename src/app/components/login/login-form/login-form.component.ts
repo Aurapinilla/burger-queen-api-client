@@ -28,7 +28,6 @@ export class LoginFormComponent implements OnInit {
 
     const formData = this.loginForm.value;
 
-
     this.apiService.login(formData.email, formData.password)
       .subscribe({
         next: (result) => {

@@ -19,9 +19,9 @@ export class OrdersService {
     }),
   };
 
- // postOrder(order: ordersResponse): Observable<any> {
-   // return this.http.post(this.urlApi, order, this.httpOptions)
- // }
+  postOrder(order: ordersResponse): Observable<any> {
+    return this.http.post(this.urlApi, order, this.httpOptions)
+  }
 }
 
 
