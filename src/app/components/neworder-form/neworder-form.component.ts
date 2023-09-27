@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, Input, EventEmitter } from '@angular/core';
 import { productResponse } from '../../interfaces/products.interface';
 import { ordersResponse } from '../../interfaces/orders.interface';
 import { OrdersService } from '../../service/orders.service';
@@ -10,8 +10,9 @@ import { catchError } from 'rxjs/operators';
   styleUrls: ['./neworder-form.component.css']
 })
 export class NeworderFormComponent {
-
+  @Input() productQuantities: number[] = [];
   @Output() createOrderClicked = new EventEmitter<void>();
+  @Output() deletedProductClicked = new EventEmitter<any>();
   clientName: string = '';
   tableNumber: string = '';
 
@@ -28,6 +29,7 @@ export class NeworderFormComponent {
     if (index !== -1) {
       const deletedProduct = this.orderedProducts[index];
       this.orderedProducts.splice(index, 1);
+      this.deletedProductClicked.emit(index);
       console.log('Producto eliminado:', deletedProduct.product);
     } else {
       console.log('Producto no encontrado');
@@ -82,4 +84,3 @@ export class NeworderFormComponent {
     return totalToPay;
   }
 }
-

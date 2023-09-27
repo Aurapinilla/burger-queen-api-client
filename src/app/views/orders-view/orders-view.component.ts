@@ -8,20 +8,22 @@ import { NeworderFormComponent } from '../../components/neworder-form/neworder-f
   templateUrl: './orders-view.component.html',
   styleUrls: ['./orders-view.component.css']
 })
-export class OrdersViewComponent implements OnInit{
+export class OrdersViewComponent implements OnInit {
   @ViewChild('newOrderForm') newOrderForm!: NeworderFormComponent;
+
+  @Output() productQuantitiesChange = new EventEmitter<number[]>();
+  productQuantities: number[] = [];
 
   products: productResponse[] = [];
   filteredProducts: productResponse[] = [];
   isBreakfastSelected: boolean = true;
-  productQuantities: number[] = [];
   total: number = 0;
 
-  @Output() productAdded = new EventEmitter<{quantity: number, product: productResponse}>();
-  
-  constructor(private productService: ProductsService) {}
+  @Output() productAdded = new EventEmitter<{ quantity: number, product: productResponse }>();
 
-  ngOnInit() {}
+  constructor(private productService: ProductsService) { }
+
+  ngOnInit() { }
 
   filterProductByType(type: string): productResponse[] {
     return this.products.filter((product) => {
@@ -30,45 +32,72 @@ export class OrdersViewComponent implements OnInit{
   }
 
   breakfastMenu() {
-  this.productService.getProducts()
-  .subscribe({
-    next: (result) => {
-      
-      this.products = result;
-      this.filteredProducts = this.filterProductByType('Breakfast');
-      this.productQuantities = new Array(this.filteredProducts.length).fill(0);
-    },
-    error: (err) => {
-      console.error(err);
-      console.log('Error loading products');
-    }
-  })
+    this.productService.getProducts()
+      .subscribe({
+        next: (result) => {
+
+          this.products = result;
+          this.filteredProducts = this.filterProductByType('Breakfast');
+          this.productQuantities = new Array(this.filteredProducts.length).fill(0);
+        },
+        error: (err) => {
+          console.error(err);
+          console.log('Error loading products');
+        }
+      })
   }
 
   lunchAndDinnerMenu() {
     this.productService.getProducts()
-    .subscribe({
-      next: (result) => {
-        
-        this.products = result;
-        this.filteredProducts = this.filterProductByType('Lunch');
-        this.isBreakfastSelected = false;
-        this.productQuantities = new Array(this.filteredProducts.length).fill(0);
-      },
-      error: (err) => {
-        console.error(err);
-        console.log('Error loading products');
-      }
-    })
+      .subscribe({
+        next: (result) => {
+
+          this.products = result;
+          this.filteredProducts = this.filterProductByType('Lunch');
+          this.isBreakfastSelected = false;
+          this.productQuantities = new Array(this.filteredProducts.length).fill(0);
+        },
+        error: (err) => {
+          console.error(err);
+          console.log('Error loading products');
+        }
+      })
+  }
+
+  decreaseQuantity(index: number, product: productResponse) {
+    if (this.productQuantities[index] > 0) {
+      this.productQuantities[index]--;
+      this.addProductToOrder(this.productQuantities[index], product);
+    }
+  }
+
+  increaseQuantity(index: number, product: productResponse) {
+    this.productQuantities[index]++;
+    this.addProductToOrder(this.productQuantities[index], product);
   }
 
   addProductToOrder(quantity: number, product: productResponse) {
-    this.newOrderForm.addProduct({ quantity, product });
-
+    // Verificar si el producto ya está en la orden
+    const existingProduct = this.newOrderForm.orderedProducts.find(item => item.product.id === product.id);
+  
+    if (existingProduct) {
+      // Si el producto ya está en la orden, actualiza la cantidad
+      existingProduct.quantity = quantity;
+    } else {
+      // Si el producto no está en la orden, agrégalo
+      this.newOrderForm.addProduct({ quantity, product });
+    }
+  
     console.log('Evento emitido:', { quantity, product });
   }
-  
+
   resetQuantity(index: number) {
+    // Realiza la lógica para restablecer la cantidad aquí
     this.productQuantities[index] = 0;
+    console.log('resetQ', index);
+  }
+
+  resetProductQuantities() {
+    this.productQuantities.fill(0);
   }
 }
