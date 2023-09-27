@@ -11,7 +11,7 @@ import { catchError } from 'rxjs/operators';
 })
 export class NeworderFormComponent {
 
-  clientName: string = ''; // Inicializa clientName como una cadena vacía
+  clientName: string = '';
   tableNumber: string = '';
 
   orderedProducts: { product: productResponse, quantity: number }[] = [];
@@ -48,21 +48,20 @@ export class NeworderFormComponent {
       status: 'pending',
       dataEntry: new Date().toISOString()
     };
-
+    //AGREGAR ERROR SI NOMBRE DEL CLIENTE O MESA ESTÁ VACIO
     this.ordersService.postOrder(newOrder)
     .pipe(
       catchError((error) => {
-        // Maneja errores si ocurren al enviar la solicitud
         console.error('Error al crear la orden:', error);
-        // Puedes realizar otras acciones de manejo de errores aquí
-        return []; // Retorna un valor predeterminado o vacío en caso de error
+    
+        return [];
       })
     )
     .subscribe(
       (response) => {
-        // Maneja la respuesta del servidor si es necesario
+        //AGREGAR MODAL CON MENSAJE PARA NOTIFICAR USUARIO
         console.log('Orden creada exitosamente:', response);
-        // Puedes realizar otras acciones aquí, como reiniciar la orden, etc.
+        
       }
     );
   }
