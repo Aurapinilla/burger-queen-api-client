@@ -1,0 +1,69 @@
+img {
+    height: 80px;
+    position: absolute;
+    top: 4%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+app-logout {
+    position: absolute;
+    top: 5%;
+    right: 20px;
+}
+
+#kitchen-view-container {
+    background-color: #F1F0F0;
+    margin-top: 170px;
+    height: 560px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 80px;
+    margin-right: 80px;
+    border-radius: 8px;
+    overflow: scroll;
+  }
+  
+  #kitchen-view {
+    border-radius: 8px;
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+#ordersList {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 20px 40px;
+    border-radius: 8px;
+}
+
+#client-status {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+li {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.pending {
+    color: red;
+}
+
+.delivered {
+    color: green;
+}

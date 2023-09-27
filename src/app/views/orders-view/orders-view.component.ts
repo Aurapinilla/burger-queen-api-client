@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, EventEmitter, Output, ViewChild } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, ViewChild } from '@angular/core';
 import { ProductsService } from '../../service/products.service';
 import { productResponse } from '../../interfaces/products.interface';
 import { NeworderFormComponent } from '../../components/neworder-form/neworder-form.component'
@@ -23,7 +23,6 @@ export class OrdersViewComponent implements OnInit{
 
   ngOnInit() {}
 
-  // método para filtrar productos por tipo
   filterProductByType(type: string): productResponse[] {
     return this.products.filter((product) => {
       return product.type === type;

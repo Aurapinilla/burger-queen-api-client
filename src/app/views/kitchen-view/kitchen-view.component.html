@@ -1,1 +1,22 @@
-<p>kitchen-view works!</p>
+<header>
+    <img src="../../../assets/bqaclogo.png" alt="Logo">
+    <app-logout></app-logout>
+</header>
+
+<div id="kitchen-view-container">
+    <h2>Orders List</h2>
+    <div id="kitchen-view">
+        <div id="ordersList" *ngFor="let order of orders">
+            <div id="client-status">
+                <h3>Client: {{ order.client }}</h3>
+                <h3 id="orderStatus" [className]="orderStatus(order)">{{ order.status }}</h3>
+            </div>
+            <ul>
+                <li *ngFor="let productInfo of order.products">
+                    <span>{{ productInfo.qty }}</span>
+                    <span>{{ productInfo.product.name }}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,3 +1,19 @@
+## 1.2.0 - 2023-09-27
+
+## Sprint Learnings
+• El uso de la directiva *[(ngModel)]*  para sincronizar datos de entrada de un formulario junto con una propiedad del formulario.
+
+### Added
+
+• Ya se pueden crear nuvas órdenes y se almacenan en la API
+• Agregué la vista del chef y se pueden ver las órdenes existentes en el momento (De la más reciente a la más antigua)
+
+### Changed
+
+• Cambié los botones para agregar el producto a la órden, y puse un botón "Add" por cada producto.
+• También modifiqué aspectos del CSS de la vista del chef.
+
+
 ## 1.0.0 - 2023-09-20
 
 ### Sprint learnings
@@ -19,5 +35,4 @@
 
 ### Fixed
 
-• Los botones para amnipular las cantidades de producto (vista mesero), estaan alterando las cantidades de todos los productos a la vez. Lo arreglé para qe solo modificara el producto correspondiente. 
-
+• Los botones para manipular las cantidades de producto (vista mesero), estaban alterando las cantidades de todos los productos a la vez. Lo arreglé para qe solo modificara el producto correspondiente. 

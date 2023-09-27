@@ -11,6 +11,12 @@ img {
     transform: translateX(-50%);
 }
 
+app-logout {
+    position: absolute;
+    top: 5%;
+    right: 20px;
+}
+
 #menuSelection {
     position: absolute;
     display: flex;

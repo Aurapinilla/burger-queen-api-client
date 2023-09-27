@@ -19,8 +19,14 @@ export class OrdersService {
     }),
   };
 
-  postOrder(order: ordersResponse): Observable<any> {
-    return this.http.post(this.urlApi, order, this.httpOptions)
+  postOrder(order: ordersResponse): Observable<ordersResponse[]> {
+    return this.http.post<ordersResponse[]>(this.urlApi, order, this.httpOptions);
+  }
+
+  getOrders(): Observable<ordersResponse[]> {
+    console.log('getorder', this.http.get<ordersResponse[]>(this.urlApi, this.httpOptions));
+    
+    return this.http.get<ordersResponse[]>(this.urlApi, this.httpOptions);
   }
 }
 
