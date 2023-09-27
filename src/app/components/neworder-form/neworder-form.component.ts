@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { productResponse } from '../../interfaces/products.interface';
 import { ordersResponse } from '../../interfaces/orders.interface';
 import { OrdersService } from '../../service/orders.service';
@@ -11,6 +11,7 @@ import { catchError } from 'rxjs/operators';
 })
 export class NeworderFormComponent {
 
+  @Output() createOrderClicked = new EventEmitter<void>();
   clientName: string = '';
   tableNumber: string = '';
 
@@ -49,6 +50,7 @@ export class NeworderFormComponent {
       dataEntry: new Date().toISOString()
     };
     //AGREGAR ERROR SI NOMBRE DEL CLIENTE O MESA ESTÁ VACIO
+    this.createOrderClicked.emit();
     this.ordersService.postOrder(newOrder)
     .pipe(
       catchError((error) => {
