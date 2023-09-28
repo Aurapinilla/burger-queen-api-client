@@ -79,7 +79,7 @@ export class OrdersViewComponent implements OnInit {
   addProductToOrder(quantity: number, product: productResponse) {
     // Verificar si el producto ya está en la orden
     const existingProduct = this.newOrderForm.orderedProducts.find(item => item.product.id === product.id);
-  
+
     if (existingProduct) {
       // Si el producto ya está en la orden, actualiza la cantidad
       existingProduct.quantity = quantity;
@@ -87,15 +87,25 @@ export class OrdersViewComponent implements OnInit {
       // Si el producto no está en la orden, agrégalo
       this.newOrderForm.addProduct({ quantity, product });
     }
-  
+
     console.log('Evento emitido:', { quantity, product });
   }
 
-  resetQuantity(index: number) {
-    // Realiza la lógica para restablecer la cantidad aquí
-    this.productQuantities[index] = 0;
-    console.log('resetQ', index);
+  resetQuantity(name: string) {
+    console.log('name received', name);
+    const product = this.filteredProducts.find((p) => p.name === name);
+    console.log('match prod', product);
+    
+    if (product) {
+      const index = this.filteredProducts.indexOf(product);
+
+      this.productQuantities[index] = 0;
+
+    } else {
+      console.log('product not found');
+    }
   }
+
 
   resetProductQuantities() {
     this.productQuantities.fill(0);
