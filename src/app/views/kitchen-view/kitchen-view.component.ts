@@ -8,8 +8,15 @@ import { ordersResponse } from 'src/app/interfaces/orders.interface';
   styleUrls: ['./kitchen-view.component.css']
 })
 export class KitchenViewComponent {
+  displayedColumns: string[] = ['client', 'status', 'products', 'timer', 'action']
+
+  orderStatusMap: { [orderId: number]: boolean } = {};
 
   orders: ordersResponse[] = [];
+
+  timer: number = 0;
+
+  isOrderReady: string = 'Mark as ready';
 
   constructor(private ordersService: OrdersService) {}
 
@@ -50,6 +57,32 @@ export class KitchenViewComponent {
       return 'pending';
     } else {
       return 'delivered';
+    }
+  }
+
+  setTimer(order: ordersResponse) {
+
+    const currentTime = new Date().getTime();
+    console.log('hora actual', currentTime);
+    console.log('hora orden', order.dataEntry);
+    const orderTime = new Date(order.dataEntry).getTime();
+    const timeDiff = currentTime - orderTime;
+
+    const minutesDiff = Math.floor(timeDiff / (1000 * 60));
+    console.log('diff', minutesDiff);
+    
+    return this.timer = minutesDiff;
+  }
+
+  markOrderReady(orderId: number) {
+    this.orderStatusMap[orderId] = !this.orderStatusMap[orderId];
+  }
+
+  buttonClass(orderId: number) {
+    if(this.orderStatusMap[orderId]) {
+      return 'orderReady';
+    } else {
+      return 'orderNotReady';
     }
   }
 }

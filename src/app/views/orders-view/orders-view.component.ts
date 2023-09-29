@@ -64,11 +64,19 @@ export class OrdersViewComponent implements OnInit {
       })
   }
 
+  //eliminar producto de order summary si con el boton de - cantidad se llega a 0
+  //removeItemsWithZeroQuantity() {
+  //  this.newOrderForm.orderedProducts = this.newOrderForm.orderedProducts.filter(item => item.quantity !== 0);
+  //}
+
   decreaseQuantity(index: number, product: productResponse) {
     if (this.productQuantities[index] > 0) {
       this.productQuantities[index]--;
       this.addProductToOrder(this.productQuantities[index], product);
     }
+   // else {
+   //   this.removeItemsWithZeroQuantity();
+   // }
   }
 
   increaseQuantity(index: number, product: productResponse) {
@@ -77,14 +85,12 @@ export class OrdersViewComponent implements OnInit {
   }
 
   addProductToOrder(quantity: number, product: productResponse) {
-    // Verificar si el producto ya está en la orden
+
     const existingProduct = this.newOrderForm.orderedProducts.find(item => item.product.id === product.id);
 
     if (existingProduct) {
-      // Si el producto ya está en la orden, actualiza la cantidad
       existingProduct.quantity = quantity;
     } else {
-      // Si el producto no está en la orden, agrégalo
       this.newOrderForm.addProduct({ quantity, product });
     }
 
@@ -105,7 +111,6 @@ export class OrdersViewComponent implements OnInit {
       console.log('product not found');
     }
   }
-
 
   resetProductQuantities() {
     this.productQuantities.fill(0);
