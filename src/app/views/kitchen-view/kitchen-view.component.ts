@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { OrdersService } from '../../service/orders.service';
 import { ordersResponse } from 'src/app/interfaces/orders.interface';
 
@@ -7,82 +7,100 @@ import { ordersResponse } from 'src/app/interfaces/orders.interface';
   templateUrl: './kitchen-view.component.html',
   styleUrls: ['./kitchen-view.component.css']
 })
-export class KitchenViewComponent {
-  displayedColumns: string[] = ['client', 'status', 'products', 'timer', 'action']
-
-  orderStatusMap: { [orderId: number]: boolean } = {};
+export class KitchenViewComponent implements OnInit, OnDestroy {
+  displayedColumns: string[] = ['client', 'status', 'products', 'timer', 'action'];
 
   orders: ordersResponse[] = [];
+  orderStatusMap: { [orderId: number]: boolean } = {};
+  orderTimers: { [orderId: number]: any } = {}; // Cambiamos el tipo de orderTimers
 
-  timer: number = 0;
-
-  isOrderReady: string = 'Mark as ready';
-
-  constructor(private ordersService: OrdersService) {}
+  constructor(private ordersService: OrdersService) { }
 
   ngOnInit() {
     this.ordersList();
   }
 
+  ngOnDestroy() {
+    for (const orderId in this.orderTimers) {
+      if (this.orderTimers.hasOwnProperty(orderId)) {
+        clearInterval(this.orderTimers[orderId]);
+        console.log(`Timer for order ${orderId} stopped.`);
+      }
+    }
+  }
+
+
   ordersList() {
     this.ordersService.getOrders().subscribe(
       (data) => {
-        this.orders = data;
-        
-        const orderedData = data.sort((a, b) => {
-          const dateA = new Date(a.dataEntry).getTime();
-          const dateB = new Date(b.dataEntry).getTime();
-          return dateB - dateA;
+        this.orders = data.map((order) => {
+          return { ...order, timer: this.setTimer(order) };
         });
-        
-        for (const order of orderedData) {
-          console.log('Orden:', order.client);
-        
-          for (const productInfo of order.products) {
-            const quantity = productInfo.qty;
-            const productName = productInfo.product.name;
-            
-            console.log(`Cantidad: ${quantity}, Producto: ${productName}`);
+
+        // Iniciar y actualizar los temporizadores
+        this.orders.forEach((order) => {
+          if (order.status === 'pending' && !this.orderTimers[order.id]) {
+            this.startTimer(order);
           }
-        }
+        });
       },
       (error) => {
         console.error('Error al obtener las órdenes:', error);
       }
     );
   }
-  
+
   orderStatus(order: ordersResponse): string {
-    if (order.status === 'pending') {
-      return 'pending';
-    } else {
-      return 'delivered';
-    }
+    return order.status === 'pending' ? 'pending' : 'delivered';
   }
 
-  setTimer(order: ordersResponse) {
+  setTimer(order: ordersResponse): number {
+    if (order.status === 'delivered') {
+      return 0;
+    }
 
     const currentTime = new Date().getTime();
-    console.log('hora actual', currentTime);
-    console.log('hora orden', order.dataEntry);
     const orderTime = new Date(order.dataEntry).getTime();
     const timeDiff = currentTime - orderTime;
 
-    const minutesDiff = Math.floor(timeDiff / (1000 * 60));
-    console.log('diff', minutesDiff);
-    
-    return this.timer = minutesDiff;
+    return Math.floor(timeDiff / (1000 * 60));
   }
 
-  markOrderReady(orderId: number) {
-    this.orderStatusMap[orderId] = !this.orderStatusMap[orderId];
-  }
-
-  buttonClass(orderId: number) {
-    if(this.orderStatusMap[orderId]) {
-      return 'orderReady';
-    } else {
-      return 'orderNotReady';
+  startTimer(order: ordersResponse) {
+    if (!this.orderTimers[order.id]) {
+      this.orderTimers[order.id] = setInterval(() => {
+        order.timer = this.setTimer(order);
+        console.log(`Timer for order ${order.id} updated to ${order.timer} mins.`);
+      }, 1000);
     }
+  }
+
+  stopTimer(orderId: number) {
+    clearInterval(this.orderTimers[orderId]);
+    delete this.orderTimers[orderId]; // Elimina el temporizador
+  }
+
+  markOrderReady(order: ordersResponse) {
+
+    this.ordersService.updateOrderStatus(order.id, 'ready').subscribe(
+      (updatedOrder) => {
+
+        const orderIndex = this.orders.findIndex((o) => o.id === order.id);
+        if (orderIndex !== -1) {
+          this.orders[orderIndex] = updatedOrder;
+        }
+        // Detén el temporizador para esta orden
+        this.stopTimer(order.id);
+        console.log(`Order ${order.id} marked as ready.`);
+      },
+      (error) => {
+        console.error('Error al marcar la orden como lista:', error);
+      }
+    );
+  }
+
+
+  buttonClass(order: ordersResponse): string {
+    return this.orderStatusMap[order.id] ? 'orderReady' : 'orderNotReady';
   }
 }

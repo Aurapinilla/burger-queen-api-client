@@ -49,7 +49,8 @@ export class NeworderFormComponent {
       client: this.clientName,
       products: orderedProductsArray,
       status: 'pending',
-      dataEntry: new Date().toISOString()
+      dataEntry: new Date().toISOString(),
+      timer: 0,
     };
     //AGREGAR ERROR SI NOMBRE DEL CLIENTE O MESA ESTÁ VACIO
     this.createOrderClicked.emit();

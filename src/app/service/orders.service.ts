@@ -28,6 +28,14 @@ export class OrdersService {
     
     return this.http.get<ordersResponse[]>(this.urlApi, this.httpOptions);
   }
+
+  updateOrderStatus(orderId: number, newStatus: string): Observable<ordersResponse> {
+    const url = 'http://localhost:8080/orders/2';
+
+    const updatedStatus = { status: newStatus };
+
+    return this.http.patch<ordersResponse>(url, updatedStatus, this.httpOptions);
+  }
 }
 
 
