@@ -1,7 +1,13 @@
 <header>
     <img src="../../../assets/bqaclogo.png" alt="Logo">
-    <app-logout></app-logout>
+    <div class="header-btns">
+        <app-ready-orders-btn></app-ready-orders-btn>
+        <app-logout></app-logout>
+    </div>
 </header>
+<div>
+    <h2>Hello! Create a new order</h2>
+</div>
 <div id="menuSelection">
     <button class ="menuBtn" (click)="breakfastMenu()">Breakfast</button>
     <button class ="menuBtn" (click)="lunchAndDinnerMenu()">Lunch & Dinner</button>

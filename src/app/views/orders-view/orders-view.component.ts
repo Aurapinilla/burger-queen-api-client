@@ -21,7 +21,7 @@ export class OrdersViewComponent implements OnInit {
 
   @Output() productAdded = new EventEmitter<{ quantity: number, product: productResponse }>();
 
-  constructor(private productService: ProductsService) { }
+  constructor(private productService: ProductsService) {};
 
   ngOnInit() { }
 

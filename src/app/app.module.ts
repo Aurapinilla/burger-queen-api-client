@@ -14,7 +14,9 @@ import { AdminViewComponent } from './views/admin-view/admin-view.component';
 import { KitchenViewComponent } from './views/kitchen-view/kitchen-view.component';
 import { NeworderFormComponent } from './components/neworder-form/neworder-form.component';
 import { LogoutComponent } from './components/logout/logout.component';
-
+import { OrdersToDeliverViewComponent } from './views/orders-to-deliver-view/orders-to-deliver-view.component';
+import { OrdersToDeliverComponent } from './components/orders-to-deliver/orders-to-deliver.component';
+import { ReadyOrdersBtnComponent } from './components/ready-orders-btn/ready-orders-btn.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,9 @@ import { LogoutComponent } from './components/logout/logout.component';
     KitchenViewComponent,
     NeworderFormComponent,
     LogoutComponent,
+    OrdersToDeliverViewComponent,
+    OrdersToDeliverComponent,
+    ReadyOrdersBtnComponent,
   ],
   imports: [
     BrowserModule,

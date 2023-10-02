@@ -17,11 +17,24 @@ app-logout {
     right: 20px;
 }
 
+app-ready-orders-btn {
+    position: absolute;
+    top: 5%;
+    right: 120px;
+}
+
+h2 {
+    position: absolute;
+    top: 130px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 #menuSelection {
     position: absolute;
     display: flex;
     gap: 70px;
-    top: 210px;
+    top: 260px;
     left: 80px;
 }
 
@@ -45,7 +58,7 @@ button {
 
 #menusContainer {
     position: absolute;
-    top: 310px;
+    top: 350px;
     left: 20px;
 }
 
@@ -91,6 +104,6 @@ app-neworder-form {
     width: 1000px;
     position: absolute;
     right: 0px;
-    top: 160px;
+    top: 220px;
     z-index: -1;
 }

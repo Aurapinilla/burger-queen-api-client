@@ -34,6 +34,7 @@ export class LoginFormComponent implements OnInit {
           sessionStorage.setItem('token', result.accessToken);
           sessionStorage.setItem('idUser', result.user.id);
           sessionStorage.setItem('role', result.user.role);
+          sessionStorage.setItem('userName', result.name)
 
           const role = sessionStorage.getItem('role');
 
