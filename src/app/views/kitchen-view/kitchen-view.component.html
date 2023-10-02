@@ -41,8 +41,8 @@
 <ng-container matColumnDef="action">
     <th mat-header-cell *matHeaderCellDef>Action</th>
     <td mat-cell *matCellDef="let order">
-        <button (click)="markOrderReady(order)" [class]="order.status === 'ready' ? 'orderReady' : 'orderNotReady'">
-            {{ order.status === 'ready' ? 'Order Ready' : 'Mark as ready' }}
+        <button (click)="markOrderReady(order)" [class]="order.status === 'ready to deliver' ? 'orderReady' : 'orderNotReady'">
+            {{ order.status === 'ready to deliver' ? 'Order Ready' : 'Mark as ready' }}
         </button>
     </td>
 </ng-container>

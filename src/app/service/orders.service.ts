@@ -30,11 +30,19 @@ export class OrdersService {
   }
 
   updateOrderStatus(orderId: number, newStatus: string): Observable<ordersResponse> {
-    const url = 'http://localhost:8080/orders/2';
+    const url = `http://localhost:8080/orders/${orderId}`;
 
     const updatedStatus = { status: newStatus };
 
     return this.http.patch<ordersResponse>(url, updatedStatus, this.httpOptions);
+  }
+
+  updateOrderTime(orderId: number, orderTime: number): Observable<ordersResponse> {
+    const url = `http://localhost:8080/orders/${orderId}`;
+
+    const updatedTimer = { timer: orderTime };
+
+    return this.http.patch<ordersResponse>(url, updatedTimer, this.httpOptions);
   }
 }
 

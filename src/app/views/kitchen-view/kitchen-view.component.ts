@@ -12,7 +12,7 @@ export class KitchenViewComponent implements OnInit, OnDestroy {
 
   orders: ordersResponse[] = [];
   orderStatusMap: { [orderId: number]: boolean } = {};
-  orderTimers: { [orderId: number]: any } = {}; // Cambiamos el tipo de orderTimers
+  orderTimers: { [orderId: number]: any } = {};
 
   constructor(private ordersService: OrdersService) { }
 
@@ -33,11 +33,17 @@ export class KitchenViewComponent implements OnInit, OnDestroy {
   ordersList() {
     this.ordersService.getOrders().subscribe(
       (data) => {
-        this.orders = data.map((order) => {
+
+        const orderedData = data.sort((a, b) => {
+          const dateA = new Date(a.dataEntry).getTime();
+          const dateB = new Date(b.dataEntry).getTime();
+          return dateB - dateA;
+        });
+
+        this.orders = orderedData.map((order) => {
           return { ...order, timer: this.setTimer(order) };
         });
 
-        // Iniciar y actualizar los temporizadores
         this.orders.forEach((order) => {
           if (order.status === 'pending' && !this.orderTimers[order.id]) {
             this.startTimer(order);
@@ -55,8 +61,8 @@ export class KitchenViewComponent implements OnInit, OnDestroy {
   }
 
   setTimer(order: ordersResponse): number {
-    if (order.status === 'delivered') {
-      return 0;
+    if (order.status === 'delivered' || order.status === 'ready to deliver') {
+      return order.timer;
     }
 
     const currentTime = new Date().getTime();
@@ -75,30 +81,55 @@ export class KitchenViewComponent implements OnInit, OnDestroy {
     }
   }
 
-  stopTimer(orderId: number) {
-    clearInterval(this.orderTimers[orderId]);
-    delete this.orderTimers[orderId]; // Elimina el temporizador
+  stopTimer(order: ordersResponse) {
+    const timerId = this.orderTimers[order.id];
+    clearInterval(timerId);
+
+    console.log(`Timer for order ${order.id} stopped at ${this.setTimer(order)} mins.`);
+    return order.timer = this.setTimer(order);
   }
 
   markOrderReady(order: ordersResponse) {
 
-    this.ordersService.updateOrderStatus(order.id, 'ready').subscribe(
+    if (order.status === 'ready to deliver') {
+      // Si el status es 'ready to deliver', cambiarlo de nuevo a 'pending'
+      order.status = 'pending';
+      this.startTimer(order); // Reanudar el temporizador
+    } else {
+      // Detener el temporizador
+      order.status = 'ready to deliver';
+      this.stopTimer(order);
+    }
+
+    this.ordersService.updateOrderStatus(order.id, order.status).subscribe(
       (updatedOrder) => {
 
         const orderIndex = this.orders.findIndex((o) => o.id === order.id);
         if (orderIndex !== -1) {
           this.orders[orderIndex] = updatedOrder;
+          
         }
-        // Detén el temporizador para esta orden
-        this.stopTimer(order.id);
+        this.ordersList();
+        console.log('this stop timer', this.stopTimer(order));
         console.log(`Order ${order.id} marked as ready.`);
+        console.log('timer aqui', this.orderTimers[order.id]);
+
+        // Actualizar timer de la orden en la API
+        this.ordersService.updateOrderTime(order.id, order.timer).subscribe(
+          () => {
+
+            console.log(`Order ${order.id} timer updated to ${order.timer} mins.`);
+          },
+          (error) => {
+            console.error('Error al actualizar el timer de la orden:', error);
+          }
+        );
       },
       (error) => {
         console.error('Error al marcar la orden como lista:', error);
       }
     );
   }
-
 
   buttonClass(order: ordersResponse): string {
     return this.orderStatusMap[order.id] ? 'orderReady' : 'orderNotReady';
