@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { usersResponse } from '../../../interfaces/users.interface';
 import { UsersService } from '../../../service/users.service';
+import { AddUserComponent } from '../add-user/add-user.component';
 
 @Component({
   selector: 'app-manage-users',
@@ -8,6 +9,10 @@ import { UsersService } from '../../../service/users.service';
   styleUrls: ['./manage-users.component.css']
 })
 export class ManageUsersComponent {
+
+  @ViewChild('addUserComponent') addUserComponent!: AddUserComponent;
+
+  createNewUser: boolean = false;
 
   users: usersResponse[] = [];
 
@@ -28,5 +33,10 @@ export class ManageUsersComponent {
         (error) => {
           console.error('Error getting users:', error);
       });
+  }
+
+  newUserForm() {
+    this.createNewUser = true;
+    this.addUserComponent.hideForm = false;
   }
 }

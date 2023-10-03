@@ -1,3 +1,12 @@
+<button class="addUser" (click)="newUserForm()">
+    <i class="fa-solid fa-plus"></i>
+    <span>New User</span>
+</button>
+
+<div *ngIf="createNewUser === true" id="newUserForm">
+    <app-add-user #addUserComponent></app-add-user>
+</div>
+
 <table mat-table [dataSource]="users">
     <!-- Columna correo -->
     <ng-container matColumnDef="email">

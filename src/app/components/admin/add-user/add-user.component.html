@@ -1,0 +1,28 @@
+<div id="newUserForm" *ngIf="hideForm === false">
+    <div class="close">
+        <i class="fa-solid fa-x" (click)="hideUserForm()"></i>
+    </div>
+    <div>
+        <h2>New User</h2>
+    </div>
+
+    <form>
+        <div>
+            <label for="email">Email</label>
+            <input type="email">
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input type="text">
+        </div>
+        <div>
+            <label for="role">Role</label>
+            <select name="userRole" id="userRole" [(ngModel)]="selectedRole">
+                <option *ngFor="let role of userRole" [value]="role">{{ role }}</option>
+            </select>
+        </div>
+        <div>
+            <button type="submit">Create User</button>
+        </div>
+    </form>
+</div>

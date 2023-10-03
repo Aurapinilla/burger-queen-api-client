@@ -2,6 +2,7 @@ table {
     display: block;
     max-height: 500px;
     overflow: auto;
+    border-radius: 8px;
 }
 
 table td {
@@ -12,10 +13,28 @@ table td {
 table th {
     position: sticky;
     top: 0;
-    z-index: 1;
+    z-index: 0;
     font-weight: bolder;
     text-align: center;
     width: 70px;
     background-color: #bee5fc;
     border: solid 1px rgb(143, 140, 140);
-  }
+}
+
+.addUser {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    padding: 6px;
+    font-weight: bolder;
+    background-color: #FF9900;
+}
+
+#newUserForm {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}

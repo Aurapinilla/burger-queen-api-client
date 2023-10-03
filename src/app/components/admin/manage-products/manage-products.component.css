@@ -2,6 +2,7 @@ table {
     display: block;
     max-height: 500px;
     overflow: auto;
+    border-radius: 8px;
 }
 
 table td {
@@ -18,4 +19,14 @@ table th {
     width: 180px;
     background-color: #bee5fc;
     border: solid 1px rgb(143, 140, 140);
-  }
+}
+
+.addProduct {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    padding: 6px;
+    font-weight: bolder;
+    background-color: #FF9900;
+}
