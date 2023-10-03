@@ -24,25 +24,21 @@ export class OrdersService {
   }
 
   getOrders(): Observable<ordersResponse[]> {
-    console.log('getorder', this.http.get<ordersResponse[]>(this.urlApi, this.httpOptions));
-    
+
     return this.http.get<ordersResponse[]>(this.urlApi, this.httpOptions);
   }
 
   updateOrderStatus(orderId: number, newStatus: string): Observable<ordersResponse> {
-    const url = `http://localhost:8080/orders/${orderId}`;
+console.log('newstatus', newStatus);
 
-    const updatedStatus = { status: newStatus };
-
-    return this.http.patch<ordersResponse>(url, updatedStatus, this.httpOptions);
+    return this.http.patch<ordersResponse>(`${this.urlApi}/${orderId}`, { status: newStatus }, this.httpOptions);
   }
 
   updateOrderTime(orderId: number, orderTime: number): Observable<ordersResponse> {
-    const url = `http://localhost:8080/orders/${orderId}`;
 
     const updatedTimer = { timer: orderTime };
 
-    return this.http.patch<ordersResponse>(url, updatedTimer, this.httpOptions);
+    return this.http.patch<ordersResponse>(`${this.urlApi}/${orderId}`, updatedTimer, this.httpOptions);
   }
 }
 

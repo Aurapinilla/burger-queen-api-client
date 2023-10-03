@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { OrdersService } from '../../service/orders.service';
 import { ordersResponse } from 'src/app/interfaces/orders.interface';
 
@@ -14,7 +14,7 @@ export class KitchenViewComponent implements OnInit, OnDestroy {
   orderStatusMap: { [orderId: number]: boolean } = {};
   orderTimers: { [orderId: number]: any } = {};
 
-  constructor(private ordersService: OrdersService) { }
+  constructor(private ordersService: OrdersService, private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.ordersList();
@@ -57,7 +57,13 @@ export class KitchenViewComponent implements OnInit, OnDestroy {
   }
 
   orderStatus(order: ordersResponse): string {
-    return order.status === 'pending' ? 'pending' : 'delivered';
+    if(order.status === 'pending') {
+      return 'pending';
+    } else if (order.status === 'ready to deliver') {
+      return 'ready';
+    } else {
+      return 'delivered' 
+    }
   }
 
   setTimer(order: ordersResponse): number {
@@ -92,10 +98,10 @@ export class KitchenViewComponent implements OnInit, OnDestroy {
   markOrderReady(order: ordersResponse) {
 
     if (order.status === 'ready to deliver') {
-      // Si el status es 'ready to deliver', cambiarlo de nuevo a 'pending'
+    
       order.status = 'pending';
       this.startTimer(order); // Reanudar el temporizador
-    } else {
+    } else if (order.status === 'pending'){
       // Detener el temporizador
       order.status = 'ready to deliver';
       this.stopTimer(order);
@@ -107,7 +113,7 @@ export class KitchenViewComponent implements OnInit, OnDestroy {
         const orderIndex = this.orders.findIndex((o) => o.id === order.id);
         if (orderIndex !== -1) {
           this.orders[orderIndex] = updatedOrder;
-          
+          this.cdr.detectChanges();
         }
         this.ordersList();
         console.log('this stop timer', this.stopTimer(order));

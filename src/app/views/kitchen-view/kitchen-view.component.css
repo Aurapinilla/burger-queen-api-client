@@ -58,6 +58,11 @@ button {
     background-color: rgb(208, 255, 208);
 }
 
+.ready {
+    color: brown;
+    background-color: rgb(255, 206, 116);
+}
+
 .orderReady {
     background-color: rgb(125, 224, 125);
 }
