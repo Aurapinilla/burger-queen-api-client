@@ -11,7 +11,7 @@ export class ManageUsersComponent {
 
   users: usersResponse[] = [];
 
-  displayedColumns: string[] = ['email', 'password', 'role', 'id'];
+  displayedColumns: string[] = ['email', 'password', 'role', 'id', 'actions'];
 
   constructor(private usersService: UsersService) { };
 

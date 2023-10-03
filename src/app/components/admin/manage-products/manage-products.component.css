@@ -1,0 +1,21 @@
+table {
+    display: block;
+    max-height: 500px;
+    overflow: auto;
+}
+
+table td {
+    text-align: center;
+    border: solid 1px rgb(173, 173, 173);
+}
+
+table th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    font-weight: bolder;
+    text-align: center;
+    width: 180px;
+    background-color: #bee5fc;
+    border: solid 1px rgb(143, 140, 140);
+  }

@@ -8,7 +8,7 @@
     <!-- Columna contraseña -->
     <ng-container matColumnDef="password">
         <th mat-header-cell *matHeaderCellDef>Password</th>
-        <th mat-cell *matCellDef="let user">{{ user.password }}</th>
+        <td mat-cell *matCellDef="let user">{{ user.password }}</td>
     </ng-container>
 
     <!-- Columna rol -->
@@ -21,6 +21,12 @@
     <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef>User ID</th>
         <td mat-cell *matCellDef="let user">{{ user.id }}</td>
+    </ng-container>
+
+    <!-- Columna acciones -->
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let user"><button>Actions</button></td>
     </ng-container>
 
     <!-- Filas de encabezado y datos -->
