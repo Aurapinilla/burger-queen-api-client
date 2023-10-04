@@ -6,23 +6,31 @@
         <h2>New User</h2>
     </div>
 
-    <form>
+    <form *ngIf="newUserForm" [formGroup]="newUserForm" (ngSubmit)="save($event)">
         <div>
             <label for="email">Email</label>
-            <input type="email">
+            <input type="email" formControlName="email">
+            <p *ngIf="emailInput?.errors && emailInput?.dirty">
+                <small *ngIf="emailInput?.hasError('required')">Email is required</small>
+                <small *ngIf="emailInput?.hasError('email')">Please type a valid email</small>
+            </p>
         </div>
         <div>
             <label for="password">Password</label>
-            <input type="text">
+            <input type="text" formControlName="password">
+            <p *ngIf="passwordInput?.errors && passwordInput?.dirty">
+                <small *ngIf="passwordInput?.hasError('required')">Password is required</small>
+                <small *ngIf="passwordInput?.hasError('minlength')">Password is minimum 6 characters long</small>
+            </p>
         </div>
         <div>
             <label for="role">Role</label>
-            <select name="userRole" id="userRole" [(ngModel)]="selectedRole">
+            <select name="userRole" id="userRole" formControlName="role">
                 <option *ngFor="let role of userRole" [value]="role">{{ role }}</option>
             </select>
         </div>
         <div>
-            <button type="submit">Create User</button>
+            <button [disabled]="newUserForm.invalid" type="submit">Create User</button>
         </div>
     </form>
 </div>

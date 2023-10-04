@@ -39,4 +39,8 @@ export class ManageUsersComponent {
     this.createNewUser = true;
     this.addUserComponent.hideForm = false;
   }
+
+  handleUserCreated(eventData: boolean) {
+    this.usersList();
+  }
 }

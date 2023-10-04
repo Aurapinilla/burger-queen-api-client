@@ -2,8 +2,8 @@ table {
     display: block;
     overflow: auto;
     background-color: #F1F0F0;
-    margin: 20px auto; 
-    max-height: 520px;
+    margin: 160px auto; 
+    max-height: 590px;
     border: solid 1px black;
     border-radius: 8px;
 }
@@ -12,7 +12,7 @@ table th {
     position: sticky;
     top: 0;
     z-index: 1;
-    width: 300px;
+    width: 200px;
     font-size: 16px;
     font-weight: bolder;
     text-align: center;
@@ -42,9 +42,37 @@ button {
     border-radius: 8px;
     padding: 5px;
     font-weight: bolder;
-    background-color: rgb(109, 172, 255);
 }
 
 button:hover {
     cursor: pointer;
+}
+
+table .pending {
+    z-index: 1;
+    color: red;
+    background-color: rgb(250, 181, 181);
+}
+
+table .delivered {
+    color: green;
+    background-color: rgb(208, 255, 208);
+}
+
+table .ready {
+    color: brown;
+    background-color: rgb(255, 206, 116);
+}
+
+.orderReady {
+    background-color: rgb(125, 224, 125);
+}
+
+.orderNotReady {
+    background-color: #FF9900;
+}
+
+.fa-circle-check {
+    font-size: 25px;
+    color: rgb(24, 102, 24);
 }

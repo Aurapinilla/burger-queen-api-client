@@ -59,3 +59,9 @@ button {
     border-radius: 8px;
     border: 1px solid #3b3b3b;
 }
+
+small {
+    font-size: 15px;
+    margin-top: 0;
+    color: red;
+}

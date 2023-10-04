@@ -4,7 +4,7 @@
 </button>
 
 <div *ngIf="createNewUser === true" id="newUserForm">
-    <app-add-user #addUserComponent></app-add-user>
+    <app-add-user (userCreated)="handleUserCreated($event)" #addUserComponent></app-add-user>
 </div>
 
 <table mat-table [dataSource]="users">

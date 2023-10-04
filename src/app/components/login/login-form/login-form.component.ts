@@ -21,7 +21,7 @@ export class LoginFormComponent implements OnInit {
     });
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   async save(event: Event) {
     event.preventDefault();
