@@ -21,3 +21,8 @@ h2 {
     text-align: center;
     margin-top: 35px;
 }
+
+#ordersList {
+    display: flex;
+    justify-content: center;
+}

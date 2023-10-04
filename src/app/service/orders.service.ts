@@ -24,13 +24,10 @@ export class OrdersService {
   }
 
   getOrders(): Observable<ordersResponse[]> {
-
     return this.http.get<ordersResponse[]>(this.urlApi, this.httpOptions);
   }
 
   updateOrderStatus(orderId: number, newStatus: string): Observable<ordersResponse> {
-console.log('newstatus', newStatus);
-
     return this.http.patch<ordersResponse>(`${this.urlApi}/${orderId}`, { status: newStatus }, this.httpOptions);
   }
 

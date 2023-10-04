@@ -6,6 +6,8 @@ import { OrdersViewComponent } from './views/orders-view/orders-view.component';
 import { AdminViewComponent } from './views/admin-view/admin-view.component';
 import { KitchenViewComponent } from './views/kitchen-view/kitchen-view.component';
 import { OrdersToDeliverViewComponent } from './views/orders-to-deliver-view/orders-to-deliver-view.component';
+import { ManageUsersComponent } from './components/admin/manage-users/manage-users.component';
+
 
 const routes: Routes = [
   {
@@ -23,8 +25,7 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    component: AdminViewComponent
-
+    component: AdminViewComponent,
   },
   {
     path: 'kitchen',
@@ -37,7 +38,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }

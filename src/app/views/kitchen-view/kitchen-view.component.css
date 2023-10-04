@@ -12,61 +12,7 @@ app-logout {
     right: 20px;
 }
 
-table {
-    background-color: #F1F0F0;
-    margin: 170px auto; 
-    max-height: 300px;
-    max-width: 70%; 
-    border-radius: 8px;
-    overflow-y: auto;
-}
-
-th {
-    font-weight: bolder;
-    text-align: center;
-}
-
-td {
-    text-align: center;
-}
-
-ul {
+#ordersList {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-li {
-    display: flex;
-    gap: 10px;
-    list-style: none;
-}
-
-button {
-    border-radius: 8px;
-    padding: 5px;
-    font-weight: bolder;
-}
-
-.pending {
-    color: red;
-    background-color: rgb(250, 181, 181);
-}
-
-.delivered {
-    color: green;
-    background-color: rgb(208, 255, 208);
-}
-
-.ready {
-    color: brown;
-    background-color: rgb(255, 206, 116);
-}
-
-.orderReady {
-    background-color: rgb(125, 224, 125);
-}
-
-.orderNotReady {
-    background-color: #FF9900;
+    justify-content: center;
 }

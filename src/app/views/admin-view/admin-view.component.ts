@@ -7,4 +7,17 @@ import { Component } from '@angular/core';
 })
 export class AdminViewComponent {
 
+  manageUsersActive: boolean = false;
+  manageProductsActive: boolean = false;
+
+  usersTab() {
+    this.manageProductsActive = false;
+    this.manageUsersActive = true;
+  }
+
+  productsTab() {
+    this.manageProductsActive = true;
+    this.manageUsersActive = false;
+  }
+
 }

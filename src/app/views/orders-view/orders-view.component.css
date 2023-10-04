@@ -23,18 +23,11 @@ app-ready-orders-btn {
     right: 120px;
 }
 
-h2 {
-    position: absolute;
-    top: 130px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
 #menuSelection {
     position: absolute;
     display: flex;
     gap: 70px;
-    top: 260px;
+    top: 240px;
     left: 80px;
 }
 
@@ -53,6 +46,8 @@ button:hover {
 }
 
 button {
+    font-weight: bolder;
+    font-size: 15px;
     background-color: #FF9900;
 }
 
@@ -94,16 +89,10 @@ button {
     font-size: 15px;
 }
 
-.addBtn {
-    border-radius: 3px;
-    font-weight: bolder;
-    font-size: 15px;
-}
-
 app-neworder-form {
     width: 1000px;
     position: absolute;
     right: 0px;
-    top: 220px;
+    top: 180px;
     z-index: -1;
 }

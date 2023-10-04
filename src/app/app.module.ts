@@ -17,6 +17,11 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { OrdersToDeliverViewComponent } from './views/orders-to-deliver-view/orders-to-deliver-view.component';
 import { OrdersToDeliverComponent } from './components/orders-to-deliver/orders-to-deliver.component';
 import { ReadyOrdersBtnComponent } from './components/ready-orders-btn/ready-orders-btn.component';
+import { ManageUsersComponent } from './components/admin/manage-users/manage-users.component';
+import { ManageProductsComponent } from './components/admin/manage-products/manage-products.component';
+import { AddUserComponent } from './components/admin/add-user/add-user.component';
+import { AddProductComponent } from './components/admin/add-product/add-product.component';
+import { OrdersListComponent } from './components/orders-list/orders-list.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +36,11 @@ import { ReadyOrdersBtnComponent } from './components/ready-orders-btn/ready-ord
     OrdersToDeliverViewComponent,
     OrdersToDeliverComponent,
     ReadyOrdersBtnComponent,
+    ManageUsersComponent,
+    ManageProductsComponent,
+    AddUserComponent,
+    AddProductComponent,
+    OrdersListComponent,
   ],
   imports: [
     BrowserModule,

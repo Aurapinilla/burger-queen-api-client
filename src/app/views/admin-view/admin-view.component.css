@@ -1,0 +1,44 @@
+img {
+    height: 80px;
+    position: absolute;
+    top: 4%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+app-logout {
+    position: absolute;
+    top: 5%;
+    right: 20px;
+}
+
+button {
+    border-radius: 8px;
+    padding: 8px;
+    font-size: 15px;
+    font-weight: bolder;
+    background-color: rgb(214, 212, 212);
+}
+
+button:hover {
+    cursor: pointer;
+    transform: translateY(5%);
+    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+    background-color: rgb(118, 169, 236);
+}
+
+.buttons {
+    display: flex;
+    gap: 35px;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 200px;
+}

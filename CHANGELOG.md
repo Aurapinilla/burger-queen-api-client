@@ -1,4 +1,21 @@
-## 1.2.0 - 2023-09-27
+## 1.0.2 2023-10-04
+
+## Sprint Learnings
+• El uso de tablas en Angular usando Angular-material.
+
+### Added
+
+• Terminé la vista del chef (ve las órdenes que se van creando, el temporizador desde que se crearon y al marcar la orden como lista se detiene el temporizador).
+• El mesero puede ver las órdenes que ya están listas para entregar y las marca como 'delivered' una vez que son entregadas.
+• Agregué la vista del admin, puede ver los productos y los usuarios.
+• El admin puede agregar un nuevo usuario.
+
+### Changed
+
+• Estilos del CSS de las vistas del chef y el admin.
+
+
+## 1.0.1 - 2023-09-27
 
 ## Sprint Learnings
 • El uso de la directiva *[(ngModel)]*  para sincronizar datos de entrada de un formulario junto con una propiedad del formulario.

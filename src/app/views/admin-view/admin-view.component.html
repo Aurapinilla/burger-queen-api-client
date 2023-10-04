@@ -1,1 +1,14 @@
-<p>admin-view works!</p>
+<header>
+    <img src="../../../assets/bqaclogo.png" alt="Logo">
+    <app-logout></app-logout>
+</header>
+
+<div class="buttons">
+    <button (click)="usersTab()">Manage Users</button>
+    <button (click)="productsTab()">Manage Products</button>
+</div>
+
+<div class="tabs">
+    <app-manage-users *ngIf="manageUsersActive === true"></app-manage-users>
+    <app-manage-products *ngIf="manageProductsActive === true"></app-manage-products>
+</div>
