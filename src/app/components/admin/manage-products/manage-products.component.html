@@ -1,7 +1,11 @@
-<button class="addProduct">
+<button class="addProduct" (click)="newProductForm()">
     <i class="fa-solid fa-plus"></i>
     <span>New Product</span>
 </button>
+
+<div *ngIf="createNewProduct === true" id="newProductForm">
+    <app-add-product (productCreated)="handleProductCreated($event)" #addProductComponent></app-add-product>
+</div>
 
 <table mat-table [dataSource]="products">
     <!-- Columna id -->

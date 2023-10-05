@@ -1,6 +1,6 @@
 table {
     display: block;
-    max-height: 500px;
+    max-height: 480px;
     overflow: auto;
     border-radius: 8px;
 }
@@ -13,7 +13,6 @@ table td {
 table th {
     position: sticky;
     top: 0;
-    z-index: 1;
     font-weight: bolder;
     text-align: center;
     width: 180px;
@@ -29,4 +28,12 @@ table th {
     padding: 6px;
     font-weight: bolder;
     background-color: #FF9900;
+}
+
+#newProductForm {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
 }

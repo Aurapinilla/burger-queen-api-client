@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { productResponse } from '../../../interfaces/products.interface';
 import { ProductsService } from '../../../service/products.service';
+import { AddProductComponent } from '../add-product/add-product.component';
 
 @Component({
   selector: 'app-manage-products',
@@ -8,6 +9,9 @@ import { ProductsService } from '../../../service/products.service';
   styleUrls: ['./manage-products.component.css']
 })
 export class ManageProductsComponent {
+  @ViewChild('addProductComponent') addProductComponent!: AddProductComponent;
+
+  createNewProduct: boolean = false;
 
   products: productResponse[] = [];
 
@@ -25,5 +29,16 @@ export class ManageProductsComponent {
     .subscribe((data) => {
       this.products = data;
     })
+  }
+
+  newProductForm() {
+    this.createNewProduct = true;
+    this.addProductComponent.hideForm = false;
+  }
+
+  handleProductCreated(event: boolean){
+    if(event === true) {
+      this.showProducts();
+    }
   }
 }
