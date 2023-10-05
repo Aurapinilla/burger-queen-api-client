@@ -43,7 +43,7 @@ export class AddUserComponent {
       email: emailValue,
       password: passwordValue,
       role: roleValue,
-      id: 0
+      id: ''
     }
 
     this.usersService.postUser(newUser)
@@ -52,6 +52,7 @@ export class AddUserComponent {
         this.userCreated.emit(true);
       });
     this.hideForm = true;
+    this.newUserForm.reset();
   }
 
   get emailInput() {

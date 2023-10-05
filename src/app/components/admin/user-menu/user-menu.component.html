@@ -1,0 +1,14 @@
+<div class="custom-menu" [ngClass]="{ 'open': isOpen }">
+    <ul>
+        <li><span>Edit</span></li>
+        <li><span (click)="cancelDelete()">Delete</span></li>
+    </ul>
+</div>
+
+<div *ngIf="confirmDelete" id="confirmDelete">
+    <span>Do you want to delete this user?</span>
+    <div class="buttons">
+        <button (click)="deleteUser(userId)">Yes</button>
+        <button (click)="cancelDelete(); toggleMenu()">No</button>
+    </div>
+</div>
