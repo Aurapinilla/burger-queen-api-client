@@ -52,7 +52,7 @@ export class AddProductComponent {
     const typeValue = this.typeSelection?.value;
 
     const newProduct: productResponse = {
-      id: 0,
+      id: '',
       name: nameValue,
       price: priceValue,
       image: '',

@@ -14,7 +14,7 @@ export class UserMenuComponent {
   @Input() userId!: string;
   @Output() yesClicked = new EventEmitter<boolean>();
 
-  constructor(private usersService: UsersService){}
+  constructor(private usersService: UsersService) { }
 
   toggleMenu() {
     this.isOpen = !this.isOpen;
@@ -22,25 +22,21 @@ export class UserMenuComponent {
 
   cancelDelete() {
     console.log('antes', this.confirmDelete);
-    
+
     this.confirmDelete = !this.confirmDelete;
     console.log('after', this.confirmDelete);
-    
+
   }
 
-  async deleteUser(userId:string) {
-    try {
-      console.log('userId', userId);
-      
-      // Espera a que se elimine el usuario antes de continuar
-      await this.usersService.deteleUser(userId);
-      
-      // Emite el evento una vez que se haya eliminado el usuario
-      this.yesClicked.emit(true);
-  
-    } catch (error) {
-      console.error('Error deleting user:', error);
-    }
+  deleteUser() {
+    this.usersService.deleteUser(this.userId)
+      .subscribe((userDeleted) => {
+        console.log('userDeleted:', userDeleted);
+        this.yesClicked.emit(true);
+      },
+        (error) => {
+          console.error('Error deleting user:', error)
+      });
   }
-  
+
 }
