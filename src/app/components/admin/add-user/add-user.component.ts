@@ -2,7 +2,6 @@ import { Component, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { usersResponse } from '../../../interfaces/users.interface';
 import { UsersService } from '../../../service/users.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-user',
@@ -18,13 +17,12 @@ export class AddUserComponent {
   @Output() userCreated = new EventEmitter<boolean>();
 
   userRole: string[] = ['admin', 'waiter', 'chef'];
-  selectedRole: string = '';
 
-  constructor(private formBuilder: FormBuilder, private usersService: UsersService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private usersService: UsersService) {
     this.newUserForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      role: [this.selectedRole, [Validators.required]],
+      role: ['', [Validators.required]],
     })
   }
 

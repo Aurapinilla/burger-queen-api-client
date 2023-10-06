@@ -39,7 +39,7 @@
             <button (click)="userMenuComponent.toggleMenu()">
                 <i class="fa-solid fa-ellipsis-vertical"></i>
             </button>
-            <app-user-menu (yesClicked)="handleYesClicked($event)" [userId]="user.id" #userMenuComponent></app-user-menu>
+            <app-user-menu (userUpdated)="handleUserUpdated()" (yesClicked)="handleYesClicked($event)" [user]="user" [userId]="user.id" #userMenuComponent></app-user-menu>
           </td>
     </ng-container>
 

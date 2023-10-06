@@ -3,6 +3,7 @@ import { usersResponse } from '../../../interfaces/users.interface';
 import { UsersService } from '../../../service/users.service';
 import { AddUserComponent } from '../add-user/add-user.component';
 import { UserMenuComponent } from '../user-menu/user-menu.component';
+import { EditUserComponent } from '../edit-user/edit-user.component';
 
 @Component({
   selector: 'app-manage-users',
@@ -12,6 +13,7 @@ import { UserMenuComponent } from '../user-menu/user-menu.component';
 export class ManageUsersComponent {
   @ViewChild('addUserComponent') addUserComponent!: AddUserComponent;
   @ViewChild('userMenuComponent') userMenuComponent!: UserMenuComponent;
+  @ViewChild('editUserComponent') editUserComponent!: EditUserComponent;
 
   createNewUser: boolean = false;
 
@@ -47,6 +49,10 @@ export class ManageUsersComponent {
   }
 
   handleUserCreated(eventData: boolean) {
+    this.usersList();
+  }
+
+  handleUserUpdated() {
     this.usersList();
   }
 

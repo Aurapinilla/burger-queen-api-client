@@ -1,6 +1,7 @@
-import { Component, Output, Input, EventEmitter } from '@angular/core';
+import { Component, Output, Input, EventEmitter, ViewChild } from '@angular/core';
 import { usersResponse } from '../../../interfaces/users.interface';
 import { UsersService } from '../../../service/users.service';
+import { EditUserComponent } from '../edit-user/edit-user.component';
 
 @Component({
   selector: 'app-user-menu',
@@ -8,11 +9,15 @@ import { UsersService } from '../../../service/users.service';
   styleUrls: ['./user-menu.component.css']
 })
 export class UserMenuComponent {
+  @ViewChild('editUserComponent') editUserComponent!: EditUserComponent;
+
   isOpen = false;
   confirmDelete = false;
 
+  @Input() user!: usersResponse;
   @Input() userId!: string;
   @Output() yesClicked = new EventEmitter<boolean>();
+  @Output() userUpdated = new EventEmitter<boolean>();
 
   constructor(private usersService: UsersService) { }
 
@@ -37,6 +42,11 @@ export class UserMenuComponent {
         (error) => {
           console.error('Error deleting user:', error)
       });
+  }
+
+  userWasUpdated(){
+      this.toggleMenu();
+      this.userUpdated.emit(true);
   }
 
 }
