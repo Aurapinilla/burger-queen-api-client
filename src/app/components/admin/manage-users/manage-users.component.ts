@@ -1,4 +1,4 @@
-import { Component, ViewChild, ViewChildren, QueryList, AfterViewInit } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { usersResponse } from '../../../interfaces/users.interface';
 import { UsersService } from '../../../service/users.service';
 import { AddUserComponent } from '../add-user/add-user.component';
@@ -10,7 +10,6 @@ import { UserMenuComponent } from '../user-menu/user-menu.component';
   styleUrls: ['./manage-users.component.css']
 })
 export class ManageUsersComponent {
-  @ViewChildren('menuTrigger') menuTriggers!: QueryList<any>;
   @ViewChild('addUserComponent') addUserComponent!: AddUserComponent;
   @ViewChild('userMenuComponent') userMenuComponent!: UserMenuComponent;
 
@@ -51,14 +50,9 @@ export class ManageUsersComponent {
     this.usersList();
   }
 
-  setUserId(userId: string) {
-    this.selectedUserId = userId;
-  }
-
   handleYesClicked(eventData: boolean) {
     if (eventData === true) {
-      console.log('event received');
-      
+      console.log('event received');  
       this.usersList();
     }
   }

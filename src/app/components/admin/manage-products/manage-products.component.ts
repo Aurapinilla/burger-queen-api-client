@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { productResponse } from '../../../interfaces/products.interface';
 import { ProductsService } from '../../../service/products.service';
 import { AddProductComponent } from '../add-product/add-product.component';
+import { ProductMenuComponent } from '../product-menu/product-menu.component';
 
 @Component({
   selector: 'app-manage-products',
@@ -10,6 +11,7 @@ import { AddProductComponent } from '../add-product/add-product.component';
 })
 export class ManageProductsComponent {
   @ViewChild('addProductComponent') addProductComponent!: AddProductComponent;
+  @ViewChild('productMenuComponent') productMenuComponent!: ProductMenuComponent;
 
   createNewProduct: boolean = false;
 
@@ -38,6 +40,13 @@ export class ManageProductsComponent {
 
   handleProductCreated(event: boolean){
     if(event === true) {
+      this.showProducts();
+    }
+  }
+
+  handleYesClicked(event: boolean) {
+    if(event === true) {
+      console.log('event received');
       this.showProducts();
     }
   }

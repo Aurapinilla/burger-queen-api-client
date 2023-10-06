@@ -32,10 +32,15 @@
         <td mat-cell *matCellDef="let product">{{ product.type }}</td>
     </ng-container>
 
-     <!-- Columna acciones -->
-     <ng-container matColumnDef="actions">
+    <!-- Columna acciones -->
+    <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef>Actions</th>
-        <td mat-cell *matCellDef="let user"><button>Actions</button></td>
+        <td mat-cell *matCellDef="let product">
+            <button (click)="productMenuComponent.toggleMenu()">
+                <i class="fa-solid fa-ellipsis-vertical"></i>
+            </button>
+            <app-product-menu (yesClicked)="handleYesClicked($event)" [productId]="product.id" #productMenuComponent></app-product-menu>
+        </td>
     </ng-container>
 
     <!-- Filas de encabezado y datos -->
