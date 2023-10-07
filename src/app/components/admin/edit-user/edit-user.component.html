@@ -1,6 +1,6 @@
 <div id="updateUserForm" *ngIf="hideForm === false">
     <div class="close">
-        <i class="fa-solid fa-x" (click)="hideupdateUserForm()"></i>
+        <i class="fa-solid fa-x" (click)="hideupdateUserForm(); cancelEdit.emit(true)"></i>
     </div>
     <div>
         <h2>Update User</h2>

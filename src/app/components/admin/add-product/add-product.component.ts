@@ -10,21 +10,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-product.component.css']
 })
 export class AddProductComponent {
-
-  hideForm: boolean = false;
-
-  newProductForm: FormGroup;
-
   @Output() productCreated = new EventEmitter<boolean>();
-
+  hideForm: boolean = false;
+  newProductForm: FormGroup;
   productType: string[] = ['Breakfast', 'Lunch', 'Beverages', 'Sides'];
-  selectedProdType: string = '';
 
   constructor(private formBuilder: FormBuilder, private productsService: ProductsService, private router: Router) {
     this.newProductForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       price: ['', [Validators.required]],
-      type: [this.selectedProdType, [Validators.required]],
+      type: ['', [Validators.required]],
     })
   }
 
@@ -47,16 +42,12 @@ export class AddProductComponent {
   async save(event: Event) {
     event.preventDefault();
 
-    const nameValue = this.nameInput?.value;
-    const priceValue = this.priceInput?.value;
-    const typeValue = this.typeSelection?.value;
-
     const newProduct: productResponse = {
       id: '',
-      name: nameValue,
-      price: priceValue,
+      name: this.nameInput?.value,
+      price: this.priceInput?.value,
       image: '',
-      type: typeValue,
+      type: this.typeSelection?.value,
       dateEntry: new Date().toISOString(),
     }
 

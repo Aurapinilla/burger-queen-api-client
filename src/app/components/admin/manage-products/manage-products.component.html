@@ -4,7 +4,7 @@
 </button>
 
 <div *ngIf="createNewProduct === true" id="newProductForm">
-    <app-add-product (productCreated)="handleProductCreated($event)" #addProductComponent></app-add-product>
+    <app-add-product (productCreated)="updateProductsList()" #addProductComponent></app-add-product>
 </div>
 
 <table mat-table [dataSource]="products">
@@ -39,7 +39,7 @@
             <button (click)="productMenuComponent.toggleMenu()">
                 <i class="fa-solid fa-ellipsis-vertical"></i>
             </button>
-            <app-product-menu (yesClicked)="handleYesClicked($event)" [productId]="product.id" #productMenuComponent></app-product-menu>
+            <app-product-menu (productUpdated)="updateProductsList()" (yesClicked)="updateProductsList()" [product]="product" #productMenuComponent></app-product-menu>
         </td>
     </ng-container>
 

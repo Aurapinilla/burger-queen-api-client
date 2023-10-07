@@ -3,7 +3,6 @@ import { usersResponse } from '../../../interfaces/users.interface';
 import { UsersService } from '../../../service/users.service';
 import { AddUserComponent } from '../add-user/add-user.component';
 import { UserMenuComponent } from '../user-menu/user-menu.component';
-import { EditUserComponent } from '../edit-user/edit-user.component';
 
 @Component({
   selector: 'app-manage-users',
@@ -13,7 +12,6 @@ import { EditUserComponent } from '../edit-user/edit-user.component';
 export class ManageUsersComponent {
   @ViewChild('addUserComponent') addUserComponent!: AddUserComponent;
   @ViewChild('userMenuComponent') userMenuComponent!: UserMenuComponent;
-  @ViewChild('editUserComponent') editUserComponent!: EditUserComponent;
 
   createNewUser: boolean = false;
 
@@ -26,7 +24,7 @@ export class ManageUsersComponent {
 
   selectedUserId: string | undefined;
 
-  constructor(private usersService: UsersService) { };
+  constructor(private usersService: UsersService) {};
 
   ngOnInit() {
     this.usersList();
@@ -48,18 +46,7 @@ export class ManageUsersComponent {
     this.addUserComponent.hideForm = false;
   }
 
-  handleUserCreated(eventData: boolean) {
+  updateUsersList(){
     this.usersList();
-  }
-
-  handleUserUpdated() {
-    this.usersList();
-  }
-
-  handleYesClicked(eventData: boolean) {
-    if (eventData === true) {
-      console.log('event received');  
-      this.usersList();
-    }
   }
 }

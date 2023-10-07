@@ -10,14 +10,11 @@ import { EditUserComponent } from '../edit-user/edit-user.component';
 })
 export class UserMenuComponent {
   @ViewChild('editUserComponent') editUserComponent!: EditUserComponent;
-
-  isOpen = false;
-  confirmDelete = false;
-
   @Input() user!: usersResponse;
-  @Input() userId!: string;
   @Output() yesClicked = new EventEmitter<boolean>();
   @Output() userUpdated = new EventEmitter<boolean>();
+  isOpen = false;
+  confirmDelete = false;
 
   constructor(private usersService: UsersService) { }
 
@@ -26,17 +23,12 @@ export class UserMenuComponent {
   }
 
   cancelDelete() {
-    console.log('antes', this.confirmDelete);
-
     this.confirmDelete = !this.confirmDelete;
-    console.log('after', this.confirmDelete);
-
   }
 
   deleteUser() {
-    this.usersService.deleteUser(this.userId)
-      .subscribe((userDeleted) => {
-        console.log('userDeleted:', userDeleted);
+    this.usersService.deleteUser(this.user.id)
+      .subscribe(() => {
         this.yesClicked.emit(true);
       },
         (error) => {
@@ -44,7 +36,7 @@ export class UserMenuComponent {
       });
   }
 
-  userWasUpdated(){
+  userWasUpdated() {
       this.toggleMenu();
       this.userUpdated.emit(true);
   }

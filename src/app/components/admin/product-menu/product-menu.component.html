@@ -1,7 +1,8 @@
 <div class="custom-menu" [ngClass]="{ 'open': isOpen }">
     <ul>
-        <li><span>Edit</span></li>
+        <li><span (click)="editProductComponent.hideupdateProductForm()">Edit</span></li>
         <li><span (click)="cancelDelete()">Delete</span></li>
+        <app-edit-product (cancelEdit)="toggleMenu()" (productUpdated)="productWasUpdated()" [product]="product" #editProductComponent></app-edit-product>
     </ul>
 </div>
 

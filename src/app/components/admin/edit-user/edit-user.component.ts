@@ -11,12 +11,11 @@ import { UsersService } from '../../../service/users.service';
 export class EditUserComponent {
   @Input() user!: usersResponse;
   @Output() userUpdated = new EventEmitter<boolean>();
+  @Output() cancelEdit = new EventEmitter<boolean>();
 
   updateUserForm!: FormGroup;
   userUpdatedData!: usersResponse;
-
   hideForm: boolean = true;
-
   userRole: string[] = ['admin', 'waiter', 'chef'];
 
   constructor(private formBuilder: FormBuilder, private usersService: UsersService) {}

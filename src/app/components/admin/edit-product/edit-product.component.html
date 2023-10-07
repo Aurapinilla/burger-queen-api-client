@@ -1,1 +1,34 @@
-<p>edit-product works!</p>
+<div id="updateProductForm" *ngIf="hideForm === false">
+    <div class="close">
+        <i class="fa-solid fa-x" (click)="hideupdateProductForm()"></i>
+    </div>
+    <div>
+        <h2>New Product</h2>
+    </div>
+
+    <form *ngIf="updateProductForm" [formGroup]="updateProductForm" (ngSubmit)="save($event)">
+        <div>
+            <label for="name">Product Name</label>
+            <input type="text" formControlName="name">
+            <p *ngIf="nameInput?.errors && nameInput?.dirty">
+                <small>Product name is required</small>
+            </p>
+        </div>
+        <div>
+            <label for="price">Price</label>
+            <input type="text" formControlName="price">
+            <p *ngIf="priceInput?.errors && priceInput?.dirty">
+                <small>Price is required</small>
+            </p>
+        </div>
+        <div>
+            <label for="type">Product Type</label>
+            <select name="type" id="type" formControlName="type">
+                <option *ngFor="let type of productType" [value]="type">{{ type }}</option>
+            </select>
+        </div>
+        <div>
+            <button [disabled]="updateProductForm.invalid" type="submit">Update Product</button>
+        </div>
+    </form>
+</div>

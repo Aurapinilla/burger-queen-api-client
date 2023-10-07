@@ -11,11 +11,8 @@ import { UsersService } from '../../../service/users.service';
 export class AddUserComponent {
 
   hideForm: boolean = false;
-
   newUserForm: FormGroup;
-
   @Output() userCreated = new EventEmitter<boolean>();
-
   userRole: string[] = ['admin', 'waiter', 'chef'];
 
   constructor(private formBuilder: FormBuilder, private usersService: UsersService) {
@@ -30,29 +27,6 @@ export class AddUserComponent {
     this.hideForm = true;
   }
 
-  async save(event: Event) {
-    event.preventDefault();
-
-    const emailValue = this.newUserForm.get('email')?.value;
-    const passwordValue = this.newUserForm.get('password')?.value;
-    const roleValue = this.newUserForm.get('role')?.value;
-
-    const newUser: usersResponse = {
-      email: emailValue,
-      password: passwordValue,
-      role: roleValue,
-      id: ''
-    }
-
-    this.usersService.postUser(newUser)
-      .subscribe((user) => {
-        console.log('user created:', user);
-        this.userCreated.emit(true);
-      });
-    this.hideForm = true;
-    this.newUserForm.reset();
-  }
-
   get emailInput() {
     return this.newUserForm.get('email');
   }
@@ -63,5 +37,24 @@ export class AddUserComponent {
 
   get roleSelection() {
     return this.newUserForm.get('role');
+  }
+
+  async save(event: Event) {
+    event.preventDefault();
+
+    const newUser: usersResponse = {
+      email: this.emailInput?.value,
+      password: this.passwordInput?.value,
+      role: this.roleSelection?.value,
+      id: ''
+    }
+    
+    this.usersService.postUser(newUser)
+      .subscribe((user) => {
+        console.log('user created:', user);
+        this.userCreated.emit(true);
+      });
+    this.hideUserForm();
+    this.newUserForm.reset();
   }
 }
