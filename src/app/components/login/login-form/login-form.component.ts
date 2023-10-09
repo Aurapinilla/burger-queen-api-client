@@ -37,6 +37,7 @@ export class LoginFormComponent implements OnInit {
           sessionStorage.setItem('userName', result.name)
 
           const role = sessionStorage.getItem('role');
+          const token = sessionStorage.getItem('token');
 
           switch (role) {
             case 'admin':
@@ -54,6 +55,8 @@ export class LoginFormComponent implements OnInit {
             default:
               console.log('Unexpected Error');
           }
+          console.log('Access Token:', token);
+          
         },
         error: (error) => {
 

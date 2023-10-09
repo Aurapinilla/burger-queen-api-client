@@ -26,4 +26,13 @@ export class UsersService {
   postUser(user: usersResponse): Observable<usersResponse[]> {
     return this.http.post<usersResponse[]>(this.urlApi, user, this.httpOptions);
   }
+
+  updateUser(userId: string, user: usersResponse): Observable<usersResponse> {
+    return this.http.put<usersResponse>(`${this.urlApi}/${userId}`, user, this.httpOptions);
+  }
+
+  deleteUser(userId: string): Observable<usersResponse> {
+    console.log('userId received', userId);
+    return this.http.delete<usersResponse>(`${this.urlApi}/${userId}`, this.httpOptions);
+  }
 }

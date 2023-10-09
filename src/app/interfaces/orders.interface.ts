@@ -6,6 +6,7 @@
       id: number;
       userId: string;
       client: string;
+      table: string;
       products: { qty: number; product: productResponse }[];
       status: string;
       dataEntry: string;

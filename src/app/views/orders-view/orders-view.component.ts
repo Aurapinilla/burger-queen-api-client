@@ -25,19 +25,16 @@ export class OrdersViewComponent implements OnInit {
 
   ngOnInit() { }
 
-  filterProductByType(type: string): productResponse[] {
-    return this.products.filter((product) => {
-      return product.type === type;
-    });
-  }
-
   breakfastMenu() {
     this.productService.getProducts()
       .subscribe({
         next: (result) => {
 
           this.products = result;
-          this.filteredProducts = this.filterProductByType('Breakfast');
+          this.filteredProducts = this.products.filter(product => product.type === 'Breakfast');
+          this.filteredProducts.sort((a, b) => {
+            return a.name.localeCompare(b.name);
+          })
           this.productQuantities = new Array(this.filteredProducts.length).fill(0);
         },
         error: (err) => {
@@ -53,7 +50,10 @@ export class OrdersViewComponent implements OnInit {
         next: (result) => {
 
           this.products = result;
-          this.filteredProducts = this.filterProductByType('Lunch');
+          this.filteredProducts = this.products.filter(product => product.type !== 'Breakfast');
+          this.filteredProducts.sort((a, b) => {
+            return a.name.localeCompare(b.name);
+          })
           this.isBreakfastSelected = false;
           this.productQuantities = new Array(this.filteredProducts.length).fill(0);
         },

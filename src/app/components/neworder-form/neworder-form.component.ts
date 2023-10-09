@@ -37,7 +37,6 @@ export class NeworderFormComponent {
   }
 
   createOrder() {
-
     const orderedProductsArray = this.orderedProducts.map(item => ({
       qty: item.quantity,
       product: item.product
@@ -47,6 +46,7 @@ export class NeworderFormComponent {
       id: 0,
       userId: (sessionStorage.getItem('idUser') || ''),
       client: this.clientName,
+      table: this.tableNumber,
       products: orderedProductsArray,
       status: 'pending',
       dataEntry: new Date().toISOString(),

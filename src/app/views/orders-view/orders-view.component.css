@@ -25,6 +25,7 @@ app-ready-orders-btn {
 
 #menuSelection {
     position: absolute;
+    z-index: 1;
     display: flex;
     gap: 70px;
     top: 240px;
@@ -53,12 +54,17 @@ button {
 
 #menusContainer {
     position: absolute;
-    top: 350px;
+    z-index: 1;
+    top: 330px;
     left: 20px;
+    max-height: 400px;
+    width: 400px;
+    overflow: auto;
 }
 
 .menuList {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     font-size: 15px;
     gap: 30px;
@@ -66,6 +72,10 @@ button {
     border-radius: 8px;
     padding-left: 20px;
     padding-right: 20px
+}
+
+.menuList h3 {
+    margin-top: 15px;
 }
 
 .menuType {
@@ -77,7 +87,7 @@ button {
 .addProduct {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: center; 
     gap: 5px;
 }
 
@@ -94,5 +104,5 @@ app-neworder-form {
     position: absolute;
     right: 0px;
     top: 180px;
-    z-index: -1;
+    z-index: 0;
 }

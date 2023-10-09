@@ -4,6 +4,9 @@
     <label for="tableNumber">Table N°: </label>
     <input type="text" id="tableNumber" [(ngModel)]="tableNumber">
 </div>
+<div id="small" *ngIf="!clientName || !tableNumber">
+    <small>*Client name and table N° are required</small>
+</div>
 <div id="orderSummary">
     <h2>Order Summary</h2>
     <div>
@@ -18,5 +21,5 @@
         <span>Total</span>
         <span>{{ total | currency}}</span>
     </div>
-    <button [disabled]="orderedProducts.length === 0" (click)="createOrder(); createOrderClicked.emit(); resetOrder()">Create Order</button>
+    <button [disabled]="orderedProducts.length === 0 || !clientName || !tableNumber" (click)="createOrder(); createOrderClicked.emit(); resetOrder()">Create Order</button>
 </div>
