@@ -6,6 +6,10 @@
     </ng-container>
 
     <!--columna table N°-->
+    <ng-container matColumnDef="table">
+        <th mat-header-cell *matHeaderCellDef>Table N°</th>
+        <td mat-cell *matCellDef="let order">{{ order.table }}</td>
+    </ng-container>
 
     <!-- Columna Productos -->
     <ng-container matColumnDef="products">

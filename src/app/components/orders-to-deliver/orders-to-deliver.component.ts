@@ -8,7 +8,7 @@ import { ordersResponse } from 'src/app/interfaces/orders.interface';
   styleUrls: ['./orders-to-deliver.component.css']
 })
 export class OrdersToDeliverComponent implements OnInit{
-  displayedColumns: string[] = ['client', 'products', 'delivery'];
+  displayedColumns: string[] = ['client', 'table', 'products', 'delivery'];
 
   orders: ordersResponse[] = [];
 
