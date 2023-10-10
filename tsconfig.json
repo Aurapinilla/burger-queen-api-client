@@ -23,6 +23,9 @@
       "ES2022",
       "dom"
     ],
+    "types": [
+      "jest"
+    ],
     "skipLibCheck": true
   },
   "angularCompilerOptions": {
