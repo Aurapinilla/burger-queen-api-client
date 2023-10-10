@@ -1,9 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { OrdersService } from './orders.service';
 import { ordersResponse } from '../interfaces/orders.interface';
-import { productResponse } from '../interfaces/products.interface';
 
 describe('OrdersService', () => {
   let service: OrdersService;
@@ -67,40 +65,9 @@ describe('OrdersService', () => {
 
     const req = httpTestingController.expectOne('http://localhost:8080/orders');
     expect(req.request.method).toBe('POST');
-    expect(req.request.body).toEqual(order)
+    expect(req.request.body).toEqual(order);
 
-    req.flush({ // simula la respuesta del servidor
-      id: 1,
-      userId: '2',
-      client: 'Camilo',
-      table: '3',
-      products: [
-        {
-          qty: 2,
-          product: {
-            id: '1',
-            name: 'Classic Burger',
-            price: 5,
-            image: 'string',
-            type: 'Lunch',
-            dateEntry: 'string',
-          }
-        },
-        {
-          qty: 3, product: {
-            id: '2',
-            name: 'Fries',
-            price: 7,
-            image: 'string',
-            type: 'Sides',
-            dateEntry: 'string',
-          }
-        },
-      ],
-      status: 'pending',
-      dataEntry: '',
-      timer: 0,
-    });
+    req.flush({order});
 
   });
 
