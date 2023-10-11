@@ -31,10 +31,11 @@ export class LoginFormComponent implements OnInit {
     this.apiService.login(formData.email, formData.password)
       .subscribe({
         next: (result) => {
+          
           sessionStorage.setItem('token', result.accessToken);
           sessionStorage.setItem('idUser', result.user.id);
           sessionStorage.setItem('role', result.user.role);
-          sessionStorage.setItem('userName', result.name)
+          sessionStorage.setItem('email', result.user.email)
 
           const role = sessionStorage.getItem('role');
           const token = sessionStorage.getItem('token');
