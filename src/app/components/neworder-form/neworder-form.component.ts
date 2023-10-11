@@ -30,7 +30,7 @@ export class NeworderFormComponent {
       const deletedProduct = this.orderedProducts[index];
       this.orderedProducts.splice(index, 1);
       this.deletedProductClicked.emit(index);
-      console.log('Producto eliminado:', deletedProduct.product);
+      console.log('Producto eliminado');
     } else {
       console.log('Producto no encontrado');
     }
@@ -52,7 +52,7 @@ export class NeworderFormComponent {
       dataEntry: new Date().toISOString(),
       timer: 0,
     };
-    //AGREGAR ERROR SI NOMBRE DEL CLIENTE O MESA ESTÁ VACIO
+
     this.createOrderClicked.emit();
     this.ordersService.postOrder(newOrder)
     .pipe(
@@ -64,7 +64,7 @@ export class NeworderFormComponent {
     )
     .subscribe(
       (response) => {
-        //AGREGAR MODAL CON MENSAJE PARA NOTIFICAR USUARIO
+        
         console.log('Orden creada exitosamente:', response);
         
       }
