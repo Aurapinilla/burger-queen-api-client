@@ -14,6 +14,5 @@ export class LogoutComponent {
     sessionStorage.clear();
     this.router.navigate(['/userLogin']);
     console.log('datos usuario', sessionStorage);
-    
   }
 }
