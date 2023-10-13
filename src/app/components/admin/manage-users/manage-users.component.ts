@@ -19,11 +19,6 @@ export class ManageUsersComponent {
 
   displayedColumns: string[] = ['email', 'password', 'role', 'id', 'actions'];
 
-  userActions: string[] = ['Delete', 'Edit'];
-  selectedAction: string = '';
-
-  selectedUserId: string | undefined;
-
   constructor(private usersService: UsersService) {};
 
   ngOnInit() {
@@ -34,10 +29,6 @@ export class ManageUsersComponent {
     this.usersService.getUsers()
       .subscribe((data: usersResponse[]) => {
         this.users = data;
-        console.log('users:', this.users);
-      },
-        (error) => {
-          console.error('Error getting users:', error);
       });
   }
 

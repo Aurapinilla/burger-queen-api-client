@@ -46,7 +46,6 @@ describe('ManageUsersComponent', () => {
     expect(component.createNewUser).toBe(false);
     expect(component.users).toEqual([]);
     expect(component.displayedColumns).toEqual(['email', 'password', 'role', 'id', 'actions']);
-    expect(component.userActions).toEqual(['Delete', 'Edit']);
 
   });
 

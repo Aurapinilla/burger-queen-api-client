@@ -20,7 +20,6 @@ export class ManageProductsComponent {
 
   displayedColumns: string[] = ['id', 'product', 'price', 'type', 'actions'];
 
-
   constructor(private productsService: ProductsService) {}
 
   ngOnInit() {
@@ -31,7 +30,7 @@ export class ManageProductsComponent {
     this.productsService.getProducts()
     .subscribe((data) => {
       this.products = data;
-    })
+    });
   }
 
   newProductForm() {
