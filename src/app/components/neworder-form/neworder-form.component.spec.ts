@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { NeworderFormComponent } from './neworder-form.component';
 import { OrdersService } from '../../service/orders.service';
 
@@ -7,7 +7,6 @@ describe('NeworderFormComponent', () => {
   let component: NeworderFormComponent;
   let fixture: ComponentFixture<NeworderFormComponent>;
   let ordersService: OrdersService;
-  let httpTestingController: HttpTestingController;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -20,7 +19,6 @@ describe('NeworderFormComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
     ordersService = TestBed.inject(OrdersService);
-    httpTestingController = TestBed.inject(HttpTestingController);
   });
 
   it('should create', () => {
