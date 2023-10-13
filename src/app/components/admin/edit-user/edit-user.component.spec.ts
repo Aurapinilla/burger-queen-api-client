@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, AbstractControl } from '@angular/forms';
 import { UsersService } from '../../../service/users.service';
 import { of } from 'rxjs';
 import { EditUserComponent } from './edit-user.component';
@@ -28,9 +28,9 @@ describe('EditUserComponent', () => {
 
   const userInput = {
     email: 'email@example.com',
-      password: '123456',
-      role: 'chef',
-      id: '3'
+    password: '123456',
+    role: 'chef',
+    id: '3'
   }
 
   it('should set innitial values', () => {
@@ -86,5 +86,17 @@ describe('EditUserComponent', () => {
     expect(updateUserSpy).toHaveBeenCalledWith(userInput.id, updatedUser);
     expect(component.hideForm).toBe(false);
     expect(userUpdatedEmitted).toBe(true);
+  });
+
+  it('should provide access to emailInput, passwordInput and roleSelection control', () => {
+    component.ngOnInit();
+    expect(component.emailInput).toBeInstanceOf(AbstractControl);
+    expect(component.emailInput?.value).toBe('');
+    
+    expect(component.passwordInput).toBeInstanceOf(AbstractControl);
+    expect(component.passwordInput?.value).toBe('');
+    
+    expect(component.roleSelection).toBeInstanceOf(AbstractControl);
+    expect(component.roleSelection?.value).toBe('');
   });
 });
