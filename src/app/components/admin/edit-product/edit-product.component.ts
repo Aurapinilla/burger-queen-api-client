@@ -23,9 +23,9 @@ export class EditProductComponent {
   ngOnInit() {
     // Inicializar el formulario con los datos del producto actual
     this.updateProductForm = this.formBuilder.group({
-      name: [this.product.name, Validators.required],
-      price: [this.product.price, Validators.required],
-      type: [this.product.type, Validators.required],
+      name: [this.product ? this.product.name: '', Validators.required],
+      price: [this.product ? this.product.price: '', Validators.required],
+      type: [this.product ? this.product.type: '', Validators.required],
     });
   }
 
