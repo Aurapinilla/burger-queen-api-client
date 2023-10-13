@@ -30,8 +30,8 @@ export class ProductsService {
     return this.http.get<productResponse[]>(this.urlApi, this.httpOptions);
   }
 
-  postProducts(product: productResponse): Observable<productResponse[]> {
-    return this.http.post<productResponse[]>(this.urlApi, product, this.httpOptions);
+  postProducts(product: productResponse): Observable<productResponse> {
+    return this.http.post<productResponse>(this.urlApi, product, this.httpOptions);
   }
 
   updateProduct(productId:string, product:productResponse): Observable<productResponse> {

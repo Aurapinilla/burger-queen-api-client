@@ -23,8 +23,8 @@ export class UsersService {
     return this.http.get<usersResponse[]>(this.urlApi, this.httpOptions)
   }
 
-  postUser(user: usersResponse): Observable<usersResponse[]> {
-    return this.http.post<usersResponse[]>(this.urlApi, user, this.httpOptions);
+  postUser(user: usersResponse): Observable<usersResponse> {
+    return this.http.post<usersResponse>(this.urlApi, user, this.httpOptions);
   }
 
   updateUser(userId: string, user: usersResponse): Observable<usersResponse> {

@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { OrdersToDeliverComponent } from './orders-to-deliver.component';
 import { OrdersService } from '../../service/orders.service';
-import { first, of } from 'rxjs';
+import { of } from 'rxjs';
 
 describe('OrdersToDeliverComponent', () => {
   let component: OrdersToDeliverComponent;
