@@ -35,9 +35,11 @@ export class EditUserComponent {
 
   async save(event: Event) {
     const updatedUserData = this.updateUserForm.value;
-
-    this.usersService.updateUser(this.user.id, updatedUserData)
+    const userId = this.user.id;
+    console.log('userID', userId);
+    this.usersService.updateUser(userId, updatedUserData)
       .subscribe((response) => {
+        console.log('userID', userId);
        console.log('user updated', response);
        this.hideForm = !this.hideForm;
        this.userUpdated.emit(true);
