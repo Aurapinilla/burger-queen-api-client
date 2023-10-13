@@ -2,7 +2,6 @@ import { Component, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { productResponse } from '../../../interfaces/products.interface';
 import { ProductsService } from '../../../service/products.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-product',
@@ -15,7 +14,7 @@ export class AddProductComponent {
   newProductForm: FormGroup;
   productType: string[] = ['Breakfast', 'Lunch', 'Beverages', 'Sides'];
 
-  constructor(private formBuilder: FormBuilder, private productsService: ProductsService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private productsService: ProductsService) {
     this.newProductForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       price: ['', [Validators.required]],
