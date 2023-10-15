@@ -32,7 +32,7 @@ export class ProductMenuComponent {
         this.yesClicked.emit(true);
       },
         (error) => {
-          console.error('Error deleting user:', error)
+          console.error('Error deleting product:', error)
       });
   }
 
