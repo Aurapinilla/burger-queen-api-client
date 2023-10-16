@@ -148,13 +148,9 @@ describe('OrdersListComponent', () => {
   it('should update order status and timer', fakeAsync(() => {
     order.status = 'ready to deliver';
     
-    // Simula la respuesta del servicio de actualizar el estado del pedido.
     const updateOrderStatusSpy = jest.spyOn(ordersService, 'updateOrderStatus').mockReturnValue(of(order));
-  
-    // Simula la respuesta del servicio de actualizar el temporizador.
     const updateOrderTimeSpy = jest.spyOn(ordersService, 'updateOrderTime').mockReturnValue(of(order));
   
-    // Supongamos que ya has probado `startTimer` y `stopTimer` por separado en otras pruebas.
     const startTimerSpy = jest.spyOn(component, 'startTimer');
     const stopTimerSpy = jest.spyOn(component, 'stopTimer');
     const setTimerSpy = jest.spyOn(component, 'setTimer');
@@ -170,15 +166,11 @@ describe('OrdersListComponent', () => {
     // Simula el avance del tiempo para completar la suscripción.
     tick();
   
-    // Comprueba que la función haya actualizado el estado y el temporizador correctamente.
     expect(order.status).toBe('pending');
     expect(order.timer).toBeGreaterThan(843900);
   
-    // Comprueba que se llama a `readyOrders` y cualquier otra acción necesaria.
     expect(ordersListSpy).toHaveBeenCalled();
-    // También puedes realizar más expectativas según tu implementación real.
-  
-    // Restablece los espías si es necesario.
+
     updateOrderStatusSpy.mockRestore();
     updateOrderTimeSpy.mockRestore();
     startTimerSpy.mockRestore();
