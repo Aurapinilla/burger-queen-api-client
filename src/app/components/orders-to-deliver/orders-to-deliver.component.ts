@@ -33,11 +33,6 @@ export class OrdersToDeliverComponent implements OnInit{
     order.status = 'delivered';
     this.ordersService.updateOrderStatus(order.id, order.status).subscribe(() => {
     this.readyOrders();
-      console.log(`Order ${order.client} status updated to ${order.status}`);
-    },
-    (error) => {
-      console.error('Error actualizando el status:', error);
-    }
-    );
+    });
   };
 }
