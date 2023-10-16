@@ -10,7 +10,6 @@ export class OrdersToDeliverViewComponent {
 
   constructor(private router: Router) {}
 
-
   navigatetoCreateOrder() {
     this.router.navigate(['orders']);
   }

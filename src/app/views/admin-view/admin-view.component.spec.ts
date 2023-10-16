@@ -19,13 +19,13 @@ describe('AdminViewComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should show/hide corresponding tabs to manage users or products', () => {
+  it('should show the tab to manage users and hide the one to manage products', () => {
     component.usersTab();
     expect(component.manageUsersActive).toBe(true);
     expect(component.manageProductsActive).toBe(false);
   });
 
-  it('shold show the tab to manage products and hide the one to manage users', () => {
+  it('should show the tab to manage products and hide the one to manage users', () => {
     component.productsTab();
     expect(component.manageUsersActive).toBe(false);
     expect(component.manageProductsActive).toBe(true);

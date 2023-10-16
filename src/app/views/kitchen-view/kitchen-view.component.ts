@@ -1,6 +1,4 @@
-import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { OrdersService } from '../../service/orders.service';
-import { ordersResponse } from 'src/app/interfaces/orders.interface';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-kitchen-view',
