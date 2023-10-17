@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output, ViewChild } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, ViewChild, AfterViewInit } from '@angular/core';
 import { ProductsService } from '../../service/products.service';
 import { productResponse } from '../../interfaces/products.interface';
 import { NeworderFormComponent } from '../../components/neworder-form/neworder-form.component'
@@ -8,7 +8,8 @@ import { NeworderFormComponent } from '../../components/neworder-form/neworder-f
   templateUrl: './orders-view.component.html',
   styleUrls: ['./orders-view.component.css']
 })
-export class OrdersViewComponent implements OnInit {
+
+export class OrdersViewComponent implements AfterViewInit {
   @ViewChild('newOrderForm') newOrderForm!: NeworderFormComponent;
 
   @Output() productQuantitiesChange = new EventEmitter<number[]>();
@@ -21,9 +22,14 @@ export class OrdersViewComponent implements OnInit {
 
   @Output() productAdded = new EventEmitter<{ quantity: number, product: productResponse }>();
 
-  constructor(private productService: ProductsService) {};
+  constructor(private productService: ProductsService) { };
 
-  ngOnInit() { }
+  ngAfterViewInit() {
+    if (this.newOrderForm) {
+      // newOrderForm está inicializado
+      // Puedes realizar acciones relacionadas con newOrderForm aquí
+    }
+  }
 
   breakfastMenu() {
     this.productService.getProducts()
@@ -62,27 +68,19 @@ export class OrdersViewComponent implements OnInit {
           console.log('Error loading products');
         }
       })
-  }
-
-  //eliminar producto de order summary si con el boton de - cantidad se llega a 0
-  //removeItemsWithZeroQuantity() {
-  //  this.newOrderForm.orderedProducts = this.newOrderForm.orderedProducts.filter(item => item.quantity !== 0);
-  //}
+  };
 
   decreaseQuantity(index: number, product: productResponse) {
     if (this.productQuantities[index] > 0) {
       this.productQuantities[index]--;
       this.addProductToOrder(this.productQuantities[index], product);
     }
-   // else {
-   //   this.removeItemsWithZeroQuantity();
-   // }
-  }
+  };
 
   increaseQuantity(index: number, product: productResponse) {
     this.productQuantities[index]++;
     this.addProductToOrder(this.productQuantities[index], product);
-  }
+  };
 
   addProductToOrder(quantity: number, product: productResponse) {
 
@@ -93,26 +91,20 @@ export class OrdersViewComponent implements OnInit {
     } else {
       this.newOrderForm.addProduct({ quantity, product });
     }
-
-    console.log('Evento emitido:', { quantity, product });
-  }
+  };
 
   resetQuantity(name: string) {
-    console.log('name received', name);
     const product = this.filteredProducts.find((p) => p.name === name);
-    console.log('match prod', product);
-    
+
     if (product) {
       const index = this.filteredProducts.indexOf(product);
 
       this.productQuantities[index] = 0;
 
-    } else {
-      console.log('product not found');
     }
-  }
+  };
 
   resetProductQuantities() {
     this.productQuantities.fill(0);
-  }
+  };
 }

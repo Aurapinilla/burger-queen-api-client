@@ -17,9 +17,15 @@
             <i class="fa-solid fa-trash" (click)="deleteProduct(i); deletedProductClicked.emit(item.product.name)"></i>
         </div>
     </div>
+    <div *ngIf="orderWasCreated" id="orderConfirmation">
+        <span>Order created successfully!</span>
+    </div>
     <div id="total">
         <span>Total</span>
         <span>{{ total | currency}}</span>
     </div>
-    <button [disabled]="orderedProducts.length === 0 || !clientName || !tableNumber" (click)="createOrder(); createOrderClicked.emit(); resetOrder()">Create Order</button>
+    <div id="button-container">
+        <button [disabled]="orderedProducts.length === 0 || !clientName || !tableNumber"
+            (click)="createOrder(); createOrderClicked.emit(); resetOrder()">Create Order</button>
+    </div>
 </div>

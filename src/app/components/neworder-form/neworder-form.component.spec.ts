@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { NeworderFormComponent } from './neworder-form.component';
 import { OrdersService } from '../../service/orders.service';
@@ -71,7 +71,7 @@ describe('NeworderFormComponent', () => {
     expect(component.deletedProductClicked.emit).toHaveBeenCalledWith(index);
   });
 
-  it('should create an order and emit createOrderClicked event', () => {
+  it('should create an order and emit createOrderClicked event', fakeAsync(() => {
 
     jest.spyOn(component.createOrderClicked, 'emit');
     component.clientName = 'Laura Gomez';
@@ -79,5 +79,9 @@ describe('NeworderFormComponent', () => {
     component.createOrder();
 
     expect(component.createOrderClicked.emit).toHaveBeenCalled();
-  });
+
+    tick(3000);
+
+    expect(component.orderWasCreated).toBe(false);
+  }));
 });

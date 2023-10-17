@@ -15,10 +15,11 @@ export class NeworderFormComponent {
   @Output() deletedProductClicked = new EventEmitter<any>();
   clientName: string = '';
   tableNumber: string = '';
+  orderWasCreated: boolean = false;
 
   orderedProducts: { product: productResponse, quantity: number }[] = [];
 
-  constructor(private ordersService: OrdersService) {}
+  constructor(private ordersService: OrdersService) { }
 
   addProduct(productInfo: { product: productResponse, quantity: number }) {
     this.orderedProducts.push(productInfo);
@@ -31,8 +32,6 @@ export class NeworderFormComponent {
       this.orderedProducts.splice(index, 1);
       this.deletedProductClicked.emit(index);
       console.log('Producto eliminado');
-    } else {
-      console.log('Producto no encontrado');
     }
   }
 
@@ -55,20 +54,23 @@ export class NeworderFormComponent {
 
     this.createOrderClicked.emit();
     this.ordersService.postOrder(newOrder)
-    .pipe(
-      catchError((error) => {
-        console.error('Error al crear la orden:', error);
-    
-        return [];
-      })
-    )
-    .subscribe(
-      (response) => {
-        
-        console.log('Orden creada exitosamente:', response);
-        
-      }
-    );
+      .pipe(
+        catchError((error) => {
+          console.error('Error al crear la orden:', error);
+
+          return [];
+        })
+      )
+      .subscribe(
+        (response) => {
+
+          this.orderWasCreated = true;
+
+          setTimeout(() => {
+            this.orderWasCreated = false;
+          }, 3000);
+        }
+      );
   }
 
   resetOrder() {
@@ -77,7 +79,7 @@ export class NeworderFormComponent {
     this.tableNumber = '';
   }
 
-  get total () {
+  get total() {
     let totalToPay = 0;
     for (const product of this.orderedProducts) {
       totalToPay += product.product.price * product.quantity;
