@@ -137,7 +137,7 @@ describe('OrdersListComponent', () => {
     status: "pending",
     dataEntry: "2022-03-05 15:00",
     timer: 843900
-  }
+  };
 
   it('should start or stop the timer of an specific order', () => {
 
@@ -176,4 +176,51 @@ describe('OrdersListComponent', () => {
     stopTimerSpy.mockRestore();
     setTimerSpy.mockRestore();
   }));
+
+  it('should update order status and timer with status "pending"', fakeAsync(() => {
+    order.status = 'pending';
+    
+    const updateOrderStatusSpy = jest.spyOn(ordersService, 'updateOrderStatus').mockReturnValue(of(order));
+    const updateOrderTimeSpy = jest.spyOn(ordersService, 'updateOrderTime').mockReturnValue(of(order));
+  
+    const startTimerSpy = jest.spyOn(component, 'startTimer');
+    const stopTimerSpy = jest.spyOn(component, 'stopTimer');
+    const setTimerSpy = jest.spyOn(component, 'setTimer');
+    const ordersListSpy = jest.spyOn(component, 'ordersList');
+  
+    component.markOrderReady(order);
+  
+    expect(updateOrderStatusSpy).toHaveBeenCalledWith(order.id, 'ready to deliver');
+    expect(stopTimerSpy).toHaveBeenCalledWith(order);
+    expect(updateOrderTimeSpy).toHaveBeenCalledWith(order.id, order.timer);
+    expect(setTimerSpy).toHaveBeenCalledWith(order);
+  
+    tick();
+  
+    expect(order.status).toBe('ready to deliver');
+    expect(order.timer).toBeGreaterThan(843900);
+  
+    expect(ordersListSpy).toHaveBeenCalled();
+
+    updateOrderStatusSpy.mockRestore();
+    updateOrderTimeSpy.mockRestore();
+    startTimerSpy.mockRestore();
+    stopTimerSpy.mockRestore();
+    setTimerSpy.mockRestore();
+  }));
+
+  it('should return the correct order status', () => {
+
+    order.status = 'pending';
+    const resultPending = component.orderStatus(order);
+    expect(resultPending).toBe('pending');
+
+    order.status = 'ready to deliver';
+    const resultReady = component.orderStatus(order);
+    expect(resultReady).toBe('ready');
+  
+    order.status = 'delivered';
+    const resultDelivered = component.orderStatus(order);
+    expect(resultDelivered).toBe('delivered');
+  });
 });

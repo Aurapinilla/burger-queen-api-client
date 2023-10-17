@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { LoginFormComponent } from './login-form.component';
 import { LoginService } from '../../../service/login.service';
 import { Router } from '@angular/router';
-import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, AbstractControl } from '@angular/forms';
 import { Observable, of, throwError } from 'rxjs';
 
 class LoginServiceMock {
@@ -97,5 +97,12 @@ describe('LoginFormComponent', () => {
     component.save(new Event('click'));
 
     expect(component.errorMessage).toEqual('Incorrect password');
+  });
+
+  it('should provide access to emailInput and passwordInput control', () => {
+    component.ngOnInit();
+    expect(component.emailInput).toBeInstanceOf(AbstractControl);
+    
+    expect(component.passwordInput).toBeInstanceOf(AbstractControl);
   });
 });

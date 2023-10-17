@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { OrdersService } from '../../service/orders.service';
 import { ordersResponse } from 'src/app/interfaces/orders.interface';
 
@@ -16,7 +16,7 @@ export class OrdersListComponent implements OnInit, OnDestroy {
   orderStatusMap: { [orderId: number]: boolean } = {};
   orderTimers: { [orderId: number]: any } = {};
 
-  constructor(private ordersService: OrdersService, private cdr: ChangeDetectorRef) { }
+  constructor(private ordersService: OrdersService) { }
 
   ngOnInit() {
     this.ordersList();
@@ -111,15 +111,11 @@ export class OrdersListComponent implements OnInit, OnDestroy {
         const orderIndex = this.orders.findIndex((o) => o.id === order.id);
         if (orderIndex !== -1) {
           this.orders[orderIndex] = updatedOrder;
-          this.cdr.detectChanges();
         }
         // Actualizar timer de la orden en la API
         this.ordersService.updateOrderTime(order.id, order.timer).subscribe(
           () => {
             console.log(`Order ${order.id} timer updated to ${order.timer} mins.`);
-          },
-          (error) => {
-            console.error('Error al actualizar el timer de la orden:', error);
           }
         );
         this.ordersList();
@@ -128,9 +124,5 @@ export class OrdersListComponent implements OnInit, OnDestroy {
         console.log('timer aqui', this.orderTimers[order.id]);
       }
     );
-  }
-
-  buttonClass(order: ordersResponse): string {
-    return this.orderStatusMap[order.id] ? 'orderReady' : 'orderNotReady';
   }
 }
