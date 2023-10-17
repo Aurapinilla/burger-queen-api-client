@@ -10,7 +10,7 @@ import { NeworderFormComponent } from '../../components/neworder-form/neworder-f
 })
 
 export class OrdersViewComponent implements AfterViewInit {
-  @ViewChild('newOrderForm') newOrderForm!: NeworderFormComponent;
+  @ViewChild('newOrderForm', { static: false }) newOrderForm!: NeworderFormComponent;
 
   @Output() productQuantitiesChange = new EventEmitter<number[]>();
   productQuantities: number[] = [];
@@ -42,10 +42,6 @@ export class OrdersViewComponent implements AfterViewInit {
             return a.name.localeCompare(b.name);
           })
           this.productQuantities = new Array(this.filteredProducts.length).fill(0);
-        },
-        error: (err) => {
-          console.error(err);
-          console.log('Error loading products');
         }
       })
   }
@@ -62,12 +58,19 @@ export class OrdersViewComponent implements AfterViewInit {
           })
           this.isBreakfastSelected = false;
           this.productQuantities = new Array(this.filteredProducts.length).fill(0);
-        },
-        error: (err) => {
-          console.error(err);
-          console.log('Error loading products');
         }
       })
+  };
+
+  addProductToOrder(quantity: number, product: productResponse) {
+
+    const existingProduct = this.newOrderForm.orderedProducts.find(item => item.product.id === product.id);
+
+    if (existingProduct) {
+      existingProduct.quantity = quantity;
+    } else {
+      this.newOrderForm.addProduct({ quantity, product });
+    }
   };
 
   decreaseQuantity(index: number, product: productResponse) {
@@ -80,17 +83,6 @@ export class OrdersViewComponent implements AfterViewInit {
   increaseQuantity(index: number, product: productResponse) {
     this.productQuantities[index]++;
     this.addProductToOrder(this.productQuantities[index], product);
-  };
-
-  addProductToOrder(quantity: number, product: productResponse) {
-
-    const existingProduct = this.newOrderForm.orderedProducts.find(item => item.product.id === product.id);
-
-    if (existingProduct) {
-      existingProduct.quantity = quantity;
-    } else {
-      this.newOrderForm.addProduct({ quantity, product });
-    }
   };
 
   resetQuantity(name: string) {

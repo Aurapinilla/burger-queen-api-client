@@ -51,9 +51,6 @@ export class OrdersListComponent implements OnInit, OnDestroy {
             this.startTimer(order);
           }
         });
-      },
-      (error) => {
-        console.error('Error al obtener las órdenes:', error);
       }
     );
   }
@@ -84,7 +81,6 @@ export class OrdersListComponent implements OnInit, OnDestroy {
     if (!this.orderTimers[order.id]) {
       this.orderTimers[order.id] = setInterval(() => {
         order.timer = this.setTimer(order);
-        console.log(`Timer for order ${order.id} updated to ${order.timer} mins.`);
       }, 1000);
     }
   }
@@ -93,7 +89,6 @@ export class OrdersListComponent implements OnInit, OnDestroy {
     const timerId = this.orderTimers[order.id];
     clearInterval(timerId);
 
-    console.log(`Timer for order ${order.id} stopped at ${this.setTimer(order)} mins.`);
     return order.timer = this.setTimer(order);
   }
 
@@ -131,9 +126,6 @@ export class OrdersListComponent implements OnInit, OnDestroy {
         console.log('this stop timer', this.stopTimer(order));
         console.log(`Order ${order.id} marked as ready.`);
         console.log('timer aqui', this.orderTimers[order.id]);
-      },
-      (error) => {
-        console.error('Error al marcar la orden como lista:', error);
       }
     );
   }

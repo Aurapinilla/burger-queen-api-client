@@ -163,7 +163,6 @@ describe('OrdersListComponent', () => {
     expect(updateOrderTimeSpy).toHaveBeenCalledWith(order.id, order.timer);
     expect(setTimerSpy).toHaveBeenCalledWith(order);
   
-    // Simula el avance del tiempo para completar la suscripción.
     tick();
   
     expect(order.status).toBe('pending');
