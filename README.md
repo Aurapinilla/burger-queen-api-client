@@ -11,7 +11,10 @@
 * [7. Planificación del Proyecto](#8-planificación-del-proyecto)
 
 
-![burger-queen](./src/assets/bqaclogo.png)
+<div style="text-align:center; margin-top:20px; margin-bottom:20px;">
+  <img src="./src/assets/bqaclogo.png" alt="BQAC Logo">
+</div>
+
 
 ## 1. Definición del producto
 
