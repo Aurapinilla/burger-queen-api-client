@@ -1,3 +1,29 @@
+## 1.0.4 2023-10-18
+
+## Sprint Learnings
+• Testeo con Jest en Angular
+
+### Added
+
+• Me dediqué al testeo de todos los componentes, servicios y vistas, logrando cubrir el 94% de las líneas de código en todo el proyecto.
+
+### Changed
+
+• Hice un ajuste al mensaje de confirmación al momento de crear una nueva orden.
+
+## 1.0.3 2023-10-11
+
+## Sprint Learnings
+• Comencé a revisar material sobre testeo en Angular
+
+### Added
+
+• Terminé las funcionalidades del admin para editar, agregar y eliminar tanto productos como usuarios
+
+### Changed
+
+• Estilos del CSS de la vista del admin.
+
 ## 1.0.2 2023-10-04
 
 ## Sprint Learnings
