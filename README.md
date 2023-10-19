@@ -1,4 +1,4 @@
-# BurgerQueenApiClient
+# BurgerQueenApiClient - (Angular)
 
 ## Índice
 
@@ -178,9 +178,79 @@ para mantener actualizado el menú.
 
 ### 1. Ingresar como Mesero (Waiter)
 
-<img align="center" width="500" src="./src/assets/waiterview.gif">
+<div align="center">
+<img width="500" src="./src/assets/waiterdemo.gif">
+</div>
 
-<img align="center" width="500" src="./src/assets/waiterdemo.gif">
+***Crear una nueva orden:***
+
+Al iniciar sesión el mesero se encontrará con la vista para crear una nueva orden, la cual es muy intuitiva.
+
+**Nota:** Por defecto el botón para crear una nueva orden estará deshabilitado, hasta que cse cumplan las condiciones necesarias para crear una orden:
+
+- El nombre del cliente y el número de la mesa son campos obligatorios.
+- Debe agregarse al menos un producto para poder crear la orden.
+
+El mesero verá las 2 opciones de menú disponibles:
+- Breakfast (Desayuno)
+- Lunch and Dinner (Almuerzo y cena)
+
+Al seleccionar una de las 2 opciones, se desplegarán los productos correspondientes a cada menú. El mesero podrá entonces manipular la cantidad deseada por cada producto (agregar o quitar).
+
+Al instante, esta información se irá actualizando en el resumen de la orden (Order summary), donde también se calcula el total a pagar por la orden. Si se quiere eliminar un producto de la orden, simplemente se debe hacer click en el ícono de eliminar. Una vez que el mesero confirme con el cliente que la orden es correcta, puede crear la orden haciendo click en el botón "Create Order". Un mensaje de confirmación aparecerá indicando que la roden se creó con éxito.
+
+***Órdenes listas para entregar:***
+
+Al hacer click en el botón "Ready Orders", el mesero será redirigido a otra vista donde podrá ver las órdenes que ya están listas para ser entregadas a los clientes, estas irán apareciendo en la medida en que el jefe de cocina marque la orden como "lista". 
+
+Una vez el mesero entregue la orden al cliente, deberá marcar la orden como "entregada" haciendo click en el botón "Mark delivered", para que el estado de la orden se actualice correctamente el sistema.
+
 
 ### 2. Ingresar como Jefe de Cocina (Chef)
+
+<div align="center">
+<img width="500" src="./src/assets/chefdemo.gif">
+</div>
+
+Al iniciar sesión, el chef visualizará un listado de las órdenes creadas hasta el momento, ordenadas de la más reciente a la más antigua. Esta lista proporciona la siguiente información:
+
+- Nombre del Cliente
+- Estatus Actual de la Orden: Se muestra si la orden está pendiente (Pending), lista para ser entregada (Ready to Deliver) o ya entregada (Delivered).
+- Productos de la Orden y Cantidad Correspondiente
+- Timer: Muestra el tiempo transcurrido en minutos desde el momento en que se creó la orden en el sistema.
+- Acciones: Aquí, el jefe de cocina puede indicar cuándo la orden está lista para ser entregada.
+
+Por defecto, el botón en la columna de acciones aparece como "Mark as Ready". Una vez que la orden esté lista, el jefe de cocina puede hacer clic en este botón, que se cambiará a "Order Ready". Esto enviará la orden al listado de órdenes listas del mesero, notificándole que puede recoger la orden en cocina. Cuando el mesero marque la orden como "Entregada", el jefe de cocina lo sabrá debido a que en acciones aparecerá el ícono de un check verde.
+
 ### 3. Ingresar como Administrador (Admin)
+
+<div align="center">
+<img width="500" src="./src/assets/admindemo.gif">
+</div>
+
+Al iniciar sesión, el administrador se encontrará con dos opciones a seleccionar:
+
+- Administrar Usuarios (Manage Users)
+- Administrar Productos (Manage Products)
+
+Dependiendo de la opción seleccionada, el administrador visualizará el listado de usuarios o productos existentes en ese momento.
+
+***Administrar usuarios (Manage Users):***
+
+En este listado se mostrarán los siguientes campos:
+
+- Email del usuario
+- Contraseña encriptada
+- Rol del usuario
+- Id del usuario
+- Acciones (Editar/Elimina)
+
+***Crear un nuevo usuario:***
+
+Para crear un nuevo usuario, el administrador debe hacer clic en el botón que se encuentra en la parte superior izquierda "+ New User". A continuación, se mostrará un formulario en el que deben completarse todos los campos para poder crear el usuario. Una vez que se confirme que la información es correcta, el administrador debe hacer clic en el botón "Create User". El nuevo usuario creado aparecerá en el listado.
+
+***Editar/Eliminar usuario:***
+
+Para editar o eliminar un usuario, el administrador debe hacer clic en el ícono de los tres puntos en la columna de acciones. Aquí se desplegarán dos opciones: editar y eliminar. Si selecciona la opción de editar, se abrirá un formulario con la información actual del usuario. Modifique los datos necesarios y luego haga clic en el botón "Update User" para guardar los cambios. Estos cambios se reflejarán inmediatamente en el listado.
+
+Si selecciona la opción de eliminar, aparecerá un mensaje de alerta para confirmar que se desea eliminar el usuario en cuestión.
