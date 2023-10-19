@@ -165,6 +165,24 @@ para mantener actualizado el menú.
 
 ## 3. Prototipos de alta fidelidad
 
+Siguiendo las historias de usuario previamente detalladas y los roles específicos a los que se dirigen, se han desarrollado prototipos de alta fidelidad utilizando la herramienta Figma. Estos prototipos ofrecen una representación visual de cómo se espera que se presenten las interfaces para cada uno de los roles cuando estén completamente implementadas.
+
+Estos prototipos brindan una vista anticipada y sobre la apariencia y funcionalidad de las interfaces. A través de estos diseños, se busca proporcionar a los usuarios y a los equipos de desarrollo una idea más sólida de la experiencia final que se obtendrá con la aplicación, lo que facilita la validación temprana de conceptos y la optimización de las interacciones.
+
+Además, estos prototipos desempeñan un papel fundamental en la fase de diseño y desarrollo al servir como punto de referencia y guía visual, lo que contribuye a garantizar que la aplicación final cumpla con los estándares de usabilidad y experiencia del usuario deseados.
+
+### Vista Mesero
+
+Accede al [Prototipo Vista Mesero](https://www.figma.com/proto/bTEEuwWfQG8SvhyJXDaXlK/Burger-Queen-Api-Client-Lo-fi?type=design&node-id=8-6&t=14QX2lO83liu5jIN-0&scaling=scale-down&page-id=0%3A1&starting-point-node-id=8%3A6)
+
+### Vista Chef
+
+Accede al [Prototipo Vista Jefe de Cocina](https://www.figma.com/proto/bTEEuwWfQG8SvhyJXDaXlK/Burger-Queen-Api-Client-Lo-fi?type=design&node-id=40-227&t=AHoVaynaMoFxvFci-0&scaling=scale-down&page-id=0%3A1&starting-point-node-id=40%3A227&show-proto-sidebar=1)
+
+### Vista Administrador
+
+Accede al [Prototipo Vista Administrador](https://www.figma.com/proto/bTEEuwWfQG8SvhyJXDaXlK/Burger-Queen-Api-Client-Lo-fi?type=design&node-id=48-526&t=AHoVaynaMoFxvFci-0&scaling=scale-down&page-id=0%3A1&starting-point-node-id=48%3A526&show-proto-sidebar=1)
+
 ## 4. Guía para el Usuario
 
 (AGREGAR LINK DEL DEPLOY)
