@@ -11,10 +11,11 @@
 * [7. Planificación del Proyecto](#8-planificación-del-proyecto)
 
 
-<div style="text-align:center; margin-top:20px; margin-bottom:20px;">
+<div align="center">
   <img src="./src/assets/bqaclogo.png" alt="BQAC Logo">
 </div>
 
+---
 
 ## 1. Definición del producto
 
@@ -176,5 +177,8 @@ para mantener actualizado el menú.
 |contraseña: 123456    |contraseña: 123456     |contraseña: 123456                |
 
 ### 1. Ingresar como Mesero (Waiter)
+
+<img width="300" src="./src/assets/waiterview.gif">
+
 ### 2. Ingresar como Jefe de Cocina (Chef)
 ### 3. Ingresar como Administrador (Admin)
