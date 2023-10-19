@@ -178,7 +178,9 @@ para mantener actualizado el menú.
 
 ### 1. Ingresar como Mesero (Waiter)
 
-<img align="center" width="700" src="./src/assets/waiterview.gif">
+<img align="center" width="500" src="./src/assets/waiterview.gif">
+
+<img align="center" width="500" src="./src/assets/waiterdemo.gif">
 
 ### 2. Ingresar como Jefe de Cocina (Chef)
 ### 3. Ingresar como Administrador (Admin)
