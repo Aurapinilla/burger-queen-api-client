@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class LoginService {
 
-  private urlApi = 'https://vercel.com/aura-pinillas-projects/burger-queen-api-mock/2MywN9ayihtjFdeHnfZzCxLJq7qR/login';
+  private urlApi = 'https://burger-queen-api-mock-wm26.onrender.com/login';
 
   constructor(private http: HttpClient) { }
 
