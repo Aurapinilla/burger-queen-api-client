@@ -15,10 +15,9 @@ export class ProductsService {
     console.log('Valor de accessToken:', this.accessToken);
   }
 
-  private urlApi:string = 'http://localhost:8080/products';
+  private urlApi:string = 'https://burger-queen-api-mock-wm26.onrender.com/products';
   
   httpOptions = {
-    // Se decalra variable y se inicializa con un objeto para la autorización
     headers: new HttpHeaders({
       Authorization: 'Bearer ' + sessionStorage.getItem('token'),
     }),

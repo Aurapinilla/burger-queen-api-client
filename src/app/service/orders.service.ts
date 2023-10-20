@@ -10,7 +10,7 @@ export class OrdersService {
 
   constructor(private http: HttpClient) { }
 
-  private urlApi = 'http://localhost:8080/orders';
+  private urlApi = 'https://burger-queen-api-mock-wm26.onrender.com/orders';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -38,12 +38,3 @@ export class OrdersService {
     return this.http.patch<ordersResponse>(`${this.urlApi}/${orderId}`, updatedTimer, this.httpOptions);
   }
 }
-
-
-//get orders
-
-//update orders
-
-//post orders
-
-//delete orders

@@ -10,7 +10,7 @@ export class UsersService {
 
   constructor(private http: HttpClient) { }
 
-  private urlApi = 'http://localhost:8080/users';
+  private urlApi = 'https://burger-queen-api-mock-wm26.onrender.com/users';
 
   httpOptions = {
     headers: new HttpHeaders({
