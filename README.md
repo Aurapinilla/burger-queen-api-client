@@ -6,9 +6,6 @@
 * [2. Historias de Usuario](#2-historias-de-usuario)
 * [3. Prototipos de alta fidelidad](#3-prototipo-de-alta-fidelidad)
 * [4. Guía para el Usuario](#4-guía-para-el-usuario)
-* [5. Historias de Usuario](#5-historias-de-usuario)
-* [6. Prototipos de alta fidelidad](#6-prototipo-de-alta-fidelidad)
-* [7. Planificación del Proyecto](#8-planificación-del-proyecto)
 
 
 <div align="center">

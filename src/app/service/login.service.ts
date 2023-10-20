@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class LoginService {
 
-  private urlApi = 'http://localhost:8080/login';
+  private urlApi = 'https://burger-queen-mock-server.onrender.com/login';
 
   constructor(private http: HttpClient) { }
 
