@@ -184,6 +184,7 @@ Accede al [Prototipo Vista Administrador](https://www.figma.com/proto/bTEEuwWfQG
 
 Dado que la aplicación se ha diseñado considerando el uso en las **tablets** del personal de servicio en el restaurante, para lograr una experiencia óptima, se recomienda acceder directamente desde un dispositivo de este tipo o ajustar la pantalla a una resolución de 1024px x 768px.
 
+Acceder a <a href ="https://burger-queen-api-client-theta.vercel.app/userLogin" target="_blank">Burger-Queen-Api-Client</a>
 Acceder a [Burger-Queen-Api-Client](https://burger-queen-api-client-theta.vercel.app/userLogin){:target="_blank"}. 
 
 ### Credenciales para acceder
