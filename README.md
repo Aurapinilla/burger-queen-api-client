@@ -170,21 +170,21 @@ Además, estos prototipos desempeñan un papel fundamental en la fase de diseño
 
 ### Vista Mesero
 
-Accede al [Prototipo Vista Mesero](https://www.figma.com/proto/bTEEuwWfQG8SvhyJXDaXlK/Burger-Queen-Api-Client-Lo-fi?type=design&node-id=8-6&t=14QX2lO83liu5jIN-0&scaling=scale-down&page-id=0%3A1&starting-point-node-id=8%3A6)
+Accede al [Prototipo Vista Mesero](https://www.figma.com/proto/bTEEuwWfQG8SvhyJXDaXlK/Burger-Queen-Api-Client-Lo-fi?type=design&node-id=8-6&t=14QX2lO83liu5jIN-0&scaling=scale-down&page-id=0%3A1&starting-point-node-id=8%3A6){:target="_blank"}
 
 ### Vista Chef
 
-Accede al [Prototipo Vista Jefe de Cocina](https://www.figma.com/proto/bTEEuwWfQG8SvhyJXDaXlK/Burger-Queen-Api-Client-Lo-fi?type=design&node-id=40-227&t=AHoVaynaMoFxvFci-0&scaling=scale-down&page-id=0%3A1&starting-point-node-id=40%3A227&show-proto-sidebar=1)
+Accede al [Prototipo Vista Jefe de Cocina](https://www.figma.com/proto/bTEEuwWfQG8SvhyJXDaXlK/Burger-Queen-Api-Client-Lo-fi?type=design&node-id=40-227&t=AHoVaynaMoFxvFci-0&scaling=scale-down&page-id=0%3A1&starting-point-node-id=40%3A227&show-proto-sidebar=1){:target="_blank"}
 
 ### Vista Administrador
 
-Accede al [Prototipo Vista Administrador](https://www.figma.com/proto/bTEEuwWfQG8SvhyJXDaXlK/Burger-Queen-Api-Client-Lo-fi?type=design&node-id=48-526&t=AHoVaynaMoFxvFci-0&scaling=scale-down&page-id=0%3A1&starting-point-node-id=48%3A526&show-proto-sidebar=1)
+Accede al [Prototipo Vista Administrador](https://www.figma.com/proto/bTEEuwWfQG8SvhyJXDaXlK/Burger-Queen-Api-Client-Lo-fi?type=design&node-id=48-526&t=AHoVaynaMoFxvFci-0&scaling=scale-down&page-id=0%3A1&starting-point-node-id=48%3A526&show-proto-sidebar=1){:target="_blank"}
 
 ## 4. Guía para el Usuario
 
 Dado que la aplicación se ha diseñado considerando el uso en las **tablets** del personal de servicio en el restaurante, para lograr una experiencia óptima, se recomienda acceder directamente desde un dispositivo de este tipo o ajustar la pantalla a una resolución de 1024px x 768px.
 
-Acceder a [Burger-Queen-Api-Client](https://burger-queen-api-client-theta.vercel.app/userLogin). 
+Acceder a [Burger-Queen-Api-Client](https://burger-queen-api-client-theta.vercel.app/userLogin){:target="_blank"}. 
 
 ### Credenciales para acceder
 
