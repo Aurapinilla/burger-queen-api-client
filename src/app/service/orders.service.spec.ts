@@ -63,7 +63,7 @@ describe('OrdersService', () => {
       expect(response).toBeDefined();
     });
 
-    const req = httpTestingController.expectOne('http://localhost:8080/orders');
+    const req = httpTestingController.expectOne('https://burger-queen-api-mock-wm26.onrender.com/orders');
     expect(req.request.method).toBe('POST');
     expect(req.request.body).toEqual(order);
 
@@ -77,7 +77,7 @@ describe('OrdersService', () => {
       expect(response).toBeDefined();
     });
 
-    const req = httpTestingController.expectOne('http://localhost:8080/orders');
+    const req = httpTestingController.expectOne('https://burger-queen-api-mock-wm26.onrender.com/orders');
     expect(req.request.method).toBe('GET');
   });
 
@@ -89,7 +89,7 @@ describe('OrdersService', () => {
       expect(response).toBeDefined();
     });
 
-    const req = httpTestingController.expectOne('http://localhost:8080/orders/1');
+    const req = httpTestingController.expectOne('https://burger-queen-api-mock-wm26.onrender.com/orders/1');
     expect(req.request.method).toBe('PATCH');
     expect(req.request.body).toEqual({status: newStatus});
   });
@@ -102,7 +102,7 @@ describe('OrdersService', () => {
       expect(response).toBeDefined();
     });
 
-    const req = httpTestingController.expectOne('http://localhost:8080/orders/1');
+    const req = httpTestingController.expectOne('https://burger-queen-api-mock-wm26.onrender.com/orders/1');
     expect(req.request.method).toBe('PATCH');
     expect(req.request.body).toEqual({timer: newTimer});
   })

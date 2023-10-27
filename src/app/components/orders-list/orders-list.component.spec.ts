@@ -146,8 +146,8 @@ describe('OrdersListComponent', () => {
   });
 
   it('should update order status and timer', fakeAsync(() => {
-    order.status = 'ready to deliver';
-    
+    order.status = 'pending'; // Cambia el estado a 'pending' en lugar de 'ready to deliver'
+  
     const updateOrderStatusSpy = jest.spyOn(ordersService, 'updateOrderStatus').mockReturnValue(of(order));
     const updateOrderTimeSpy = jest.spyOn(ordersService, 'updateOrderTime').mockReturnValue(of(order));
   
@@ -158,24 +158,24 @@ describe('OrdersListComponent', () => {
   
     component.markOrderReady(order);
   
-    expect(updateOrderStatusSpy).toHaveBeenCalledWith(order.id, 'pending');
+    expect(updateOrderStatusSpy).toHaveBeenCalledWith(order.id, 'ready to deliver');
     expect(stopTimerSpy).toHaveBeenCalledWith(order);
     expect(updateOrderTimeSpy).toHaveBeenCalledWith(order.id, order.timer);
     expect(setTimerSpy).toHaveBeenCalledWith(order);
   
     tick();
   
-    expect(order.status).toBe('pending');
+    expect(order.status).toBe('ready to deliver');
     expect(order.timer).toBeGreaterThan(843900);
   
     expect(ordersListSpy).toHaveBeenCalled();
-
+  
     updateOrderStatusSpy.mockRestore();
     updateOrderTimeSpy.mockRestore();
     startTimerSpy.mockRestore();
     stopTimerSpy.mockRestore();
     setTimerSpy.mockRestore();
-  }));
+  }));  
 
   it('should update order status and timer with status "pending"', fakeAsync(() => {
     order.status = 'pending';

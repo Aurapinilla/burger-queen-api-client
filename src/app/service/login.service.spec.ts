@@ -31,7 +31,7 @@ describe('LoginService', () => {
       expect(response).toBeDefined(); // verifica que la respuesta no sea undefined
     });
 
-    const req = httpTestingController.expectOne('http://localhost:8080/login');
+    const req = httpTestingController.expectOne('https://burger-queen-api-mock-wm26.onrender.com/login');
     expect(req.request.method).toBe('POST');
     expect(req.request.body).toEqual({ email, password });
 

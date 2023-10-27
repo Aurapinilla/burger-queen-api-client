@@ -52,7 +52,7 @@ describe('UsersService', () => {
       expect(response).toBeDefined();
     });
 
-    const req = httpTestingController.expectOne('http://localhost:8080/users');
+    const req = httpTestingController.expectOne('https://burger-queen-api-mock-wm26.onrender.com/users');
     expect(req.request.method).toBe('GET');
 
     req.flush({ users })
@@ -64,7 +64,7 @@ describe('UsersService', () => {
       expect(response).toBeDefined();
     });
 
-    const req = httpTestingController.expectOne('http://localhost:8080/users');
+    const req = httpTestingController.expectOne('https://burger-queen-api-mock-wm26.onrender.com/users');
     expect(req.request.method).toBe('POST');
     expect(req.request.body).toEqual(user);
 
@@ -77,7 +77,7 @@ describe('UsersService', () => {
       expect(response).toBeDefined();
     });
 
-    const req = httpTestingController.expectOne('http://localhost:8080/users/5');
+    const req = httpTestingController.expectOne('https://burger-queen-api-mock-wm26.onrender.com/users/5');
     expect(req.request.method).toBe('PUT');
     expect(req.request.body).toEqual(user);
 
@@ -90,7 +90,7 @@ describe('UsersService', () => {
       expect(response).toBeDefined();
     });
 
-    const req = httpTestingController.expectOne('http://localhost:8080/users/5');
+    const req = httpTestingController.expectOne('https://burger-queen-api-mock-wm26.onrender.com/users/5');
     expect(req.request.method).toBe('DELETE');
   });
 });

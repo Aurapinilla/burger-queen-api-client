@@ -119,9 +119,7 @@ export class OrdersListComponent implements OnInit, OnDestroy {
           }
         );
         this.ordersList();
-        console.log('this stop timer', this.stopTimer(order));
         console.log(`Order ${order.id} marked as ready.`);
-        console.log('timer aqui', this.orderTimers[order.id]);
       }
     );
   }

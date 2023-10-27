@@ -58,7 +58,7 @@ describe('ProductsService', () => {
       expect(response).toBeDefined();
     });
 
-    const req = httpTestingController.expectOne('http://localhost:8080/products');
+    const req = httpTestingController.expectOne('https://burger-queen-api-mock-wm26.onrender.com/products');
     expect(req.request.method).toBe('GET');
 
     req.flush({ products })
@@ -70,7 +70,7 @@ describe('ProductsService', () => {
       expect(response).toBeDefined();
     });
 
-    const req = httpTestingController.expectOne('http://localhost:8080/products');
+    const req = httpTestingController.expectOne('https://burger-queen-api-mock-wm26.onrender.com/products');
     expect(req.request.method).toBe('POST');
     expect(req.request.body).toEqual(product);
 
@@ -83,7 +83,7 @@ describe('ProductsService', () => {
       expect(response).toBeDefined();
     });
 
-    const req = httpTestingController.expectOne('http://localhost:8080/products/5');
+    const req = httpTestingController.expectOne('https://burger-queen-api-mock-wm26.onrender.com/products/5');
     expect(req.request.method).toBe('PUT');
     expect(req.request.body).toEqual(product);
 
@@ -96,7 +96,7 @@ describe('ProductsService', () => {
       expect(response).toBeDefined();
     });
 
-    const req = httpTestingController.expectOne('http://localhost:8080/products/5');
+    const req = httpTestingController.expectOne('https://burger-queen-api-mock-wm26.onrender.com/products/5');
     expect(req.request.method).toBe('DELETE');
   });
 });
