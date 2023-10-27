@@ -4,7 +4,7 @@
 
 * [1. Definición del producto](#1-definición-del-producto)
 * [2. Historias de Usuario](#2-historias-de-usuario)
-* [3. Prototipos de alta fidelidad](#3-prototipo-de-alta-fidelidad)
+* [3. Prototipos de alta fidelidad](#3-prototipos-de-alta-fidelidad)
 * [4. Guía para el Usuario](#4-guía-para-el-usuario)
 
 
@@ -170,22 +170,21 @@ Además, estos prototipos desempeñan un papel fundamental en la fase de diseño
 
 ### Vista Mesero
 
-Accede al [Prototipo Vista Mesero](https://www.figma.com/proto/bTEEuwWfQG8SvhyJXDaXlK/Burger-Queen-Api-Client-Lo-fi?type=design&node-id=8-6&t=14QX2lO83liu5jIN-0&scaling=scale-down&page-id=0%3A1&starting-point-node-id=8%3A6){:target="_blank"}
+Accede al [Prototipo Vista Mesero](https://www.figma.com/proto/bTEEuwWfQG8SvhyJXDaXlK/Burger-Queen-Api-Client-Lo-fi?type=design&node-id=8-6&t=14QX2lO83liu5jIN-0&scaling=scale-down&page-id=0%3A1&starting-point-node-id=8%3A6)
 
 ### Vista Chef
 
-Accede al [Prototipo Vista Jefe de Cocina](https://www.figma.com/proto/bTEEuwWfQG8SvhyJXDaXlK/Burger-Queen-Api-Client-Lo-fi?type=design&node-id=40-227&t=AHoVaynaMoFxvFci-0&scaling=scale-down&page-id=0%3A1&starting-point-node-id=40%3A227&show-proto-sidebar=1){:target="_blank"}
+Accede al [Prototipo Vista Jefe de Cocina](https://www.figma.com/proto/bTEEuwWfQG8SvhyJXDaXlK/Burger-Queen-Api-Client-Lo-fi?type=design&node-id=40-227&t=AHoVaynaMoFxvFci-0&scaling=scale-down&page-id=0%3A1&starting-point-node-id=40%3A227&show-proto-sidebar=1)
 
 ### Vista Administrador
 
-Accede al [Prototipo Vista Administrador](https://www.figma.com/proto/bTEEuwWfQG8SvhyJXDaXlK/Burger-Queen-Api-Client-Lo-fi?type=design&node-id=48-526&t=AHoVaynaMoFxvFci-0&scaling=scale-down&page-id=0%3A1&starting-point-node-id=48%3A526&show-proto-sidebar=1){:target="_blank"}
+Accede al [Prototipo Vista Administrador](https://www.figma.com/proto/bTEEuwWfQG8SvhyJXDaXlK/Burger-Queen-Api-Client-Lo-fi?type=design&node-id=48-526&t=AHoVaynaMoFxvFci-0&scaling=scale-down&page-id=0%3A1&starting-point-node-id=48%3A526&show-proto-sidebar=1)
 
 ## 4. Guía para el Usuario
 
 Dado que la aplicación se ha diseñado considerando el uso en las **tablets** del personal de servicio en el restaurante, para lograr una experiencia óptima, se recomienda acceder directamente desde un dispositivo de este tipo o ajustar la pantalla a una resolución de 1024px x 768px.
 
-Acceder a <a href ="https://burger-queen-api-client-theta.vercel.app/userLogin" target="_blank">Burger-Queen-Api-Client</a>
-Acceder a [Burger-Queen-Api-Client](https://burger-queen-api-client-theta.vercel.app/userLogin){:target="_blank"}. 
+Acceder a [Burger-Queen-Api-Client](https://burger-queen-api-client-theta.vercel.app/userLogin). 
 
 ### Credenciales para acceder
 
